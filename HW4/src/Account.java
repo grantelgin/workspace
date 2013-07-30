@@ -8,10 +8,13 @@
  * The goShopping method then loops through items in order of priority 1st, then by cost to show remaining balance after each item.  
  */	
 
-public class Account {
+public class Account implements AccountInterface {
 private int chartOfAccountsCode;
 private String AccountType;
 
+public boolean verifyAccount(Account otherAccount) {
+	return (this.chartOfAccountsCode == otherAccount.chartOfAccountsCode);
+}
 	public Account() {
 		setChartOfAccountsCode(-1);
 		setAccountType("undefined Account");

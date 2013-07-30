@@ -76,6 +76,7 @@ public class Item {
 		if (name.equals("exit")) {
 			System.exit(0);
 		}
+			
 		
 		return thisItem;
 		
