@@ -18,14 +18,18 @@ public class ShoppingList {
 	private static Scanner keyboard = new Scanner( System.in );
 	
 	public static void main(String[] args) {
-		System.out.println("Construction project shopping list\nv 1.0\n");
+		System.out.println("Construction project shopping list\nv 1.1\n");
 		System.out.println("To start building your shopping list, select an item from the list below.\nTyping the name of the item will add it to your list and display the current price.");
 		// show user the items that are available
 		showAvailableItems();
 		// then get input from user to build shopping list
 		buildItemList();
 		
-
+	}
+	
+	public ShoppingList() {
+		totalCost = -1;
+		name = "no name";
 	}
 	
 	public static void showAvailableItems() {
@@ -76,6 +80,9 @@ public class ShoppingList {
 		// calculate the total cost and display to user
 		double listCost = calcTotalCost(listItem);
 		System.out.printf("\nTOTAL: $ %6.2f\n", listCost);
+		System.out.println();
+		
+		
 		// verify funds are available
 		checkFunds(listCost, listItem);
 	}
@@ -83,20 +90,41 @@ public class ShoppingList {
 	
 	public static void checkFunds(double listCost, Item[] listItem) {
 		FundsAccount funds = new FundsAccount();
-		funds.setAvailableFunds(59.0);
-		double availFunds = funds.getAvailableFunds();
+		double availFunds = 0;
+		String whichAccount = "Which account would you like to use to purchase these materials?\n\nTo use the default funds account, type 'default' and press return.\nTo use a new account, type 'new':"; 
+		System.out.println(whichAccount);
+		String pickAccount = keyboard.next();
+		boolean validAccount = false;
+		
+		if (pickAccount.equalsIgnoreCase("default")) {
+			funds.setAvailableFunds(59.0);
+			availFunds = funds.getAvailableFunds();
+			funds.writeOutput();
+			validAccount = true;
+		}
+		if (pickAccount.equalsIgnoreCase("new")) {
+			funds = funds.createFundsAccount();
+			availFunds = funds.getAvailableFunds();
+			funds.writeOutput();
+			validAccount = true;
+		}
+		
+	if (validAccount) {
 		// if the total cost exceeds the available funds, prompt the user to set the priority to buy the most important items first
 		if (listCost > availFunds) {
 			System.out.printf("Your total cost, $%6.2f, exceeds your account balance of $%6.2f. \nSet the priority for each item on your list. \nItems will be added to your shopping list in order of priority until an item exceeds your budget.\n", listCost, availFunds);
-			setItemPriority(listItem);
+			setItemPriority(listItem, funds);
 		}
 		else
-			goShopping(listItem);
-		
-		
+			goShopping(listItem, funds);
+	}
+		else {
+			System.out.println("Woops! Please enter 'default' or 'new'.\n");
+			checkFunds(listCost, listItem);
+		}
 	}
 	
-	public static void setItemPriority(Item[] listItem) {
+	public static void setItemPriority(Item[] listItem, FundsAccount funds) {
 		Item[] sortedListItem = new Item[7];
 		String inputName;
 		System.out.println();
@@ -132,12 +160,11 @@ public class ShoppingList {
 					
 		}
 		
-		goShopping(sortedListItem);
+		goShopping(sortedListItem, funds);
 	}
 	
-	public static void goShopping(Item[] list) {
-		FundsAccount funds = new FundsAccount();
-		funds.setAvailableFunds(59.0);
+	public static void goShopping(Item[] list, FundsAccount funds) {
+		
 		double availFunds = funds.getAvailableFunds();
 		String unPurchasedItems = "";
 		// loop through the items in order of priority. Minimize the amount of available funds left.

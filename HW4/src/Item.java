@@ -9,9 +9,15 @@
 
 public class Item {
 
-	private String name = "no item";
-	private double price = 0;
-	private int priority = 99;
+	private String name;
+	private double price;
+	private int priority;
+	
+	public Item() {
+		name ="no item";
+		price = 0;
+		priority = 99;
+	}
 	
 	public static Item validateItem(String name) {
 		
