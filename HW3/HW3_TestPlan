@@ -1,0 +1,14 @@
+Grant Elgin
+HW 3 Test Plan
+
+Happy case:
+1: Enter a name of an item. Return.Enter a total of 7 items presented in the list. Do not repeat item names.
+2: The cost of the 7 items will exceed the budget of $ 59.00. Proceed with setting priority.
+3: Enter the name of an item with top priority on the selected item list. Return. Enter the name of the next highest priority item. Repeat for 7 total items.
+4: View purchased items and remaining items.
+
+
+Edge Cases:
+1: Enter a name of an item not on the list.
+2: Misspell an item. 
+3: Misspell an item on priority list. 

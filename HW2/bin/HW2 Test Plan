@@ -1,0 +1,15 @@
+HW 2 Test Plan
+
+Happy case:
+1: Enter first name with letters only. Return.
+2: Enter last name with letters only. Return. 
+3: Enter an integer. Return
+4: Enter a double. Return
+5: Enter (5) more integers. Return after each. View report. 
+
+
+Edge Cases:
+1: Enter first name with numbers and letters.
+2: Enter last name with numbers and letters.
+3: Enter letters or non-integers in to number inputs. 
+

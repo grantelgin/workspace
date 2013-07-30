@@ -1,0 +1,15 @@
+Grant Elgin
+CS 232 HW 2 Pseudocode
+
+1: Greet user and ask for first name input.
+2: validate firstName input, check for exit.
+3: Greet user with first name, ask for last name.
+4: validate last name input, check for exit. 
+5: introduce report, ask for number input, explain they must hit enter after each entry.
+6: validate input, check for exit, run math methods. 
+7: display number entered, display number total, number average, low, high
+8: new line, request input.
+9: validate input, check for exit, run math methods. 
+10: display number entered, display number total, number average, low, high.
+11: repeat steps 8, 9, 10 for 7 total numbers.
+12: display final report.
