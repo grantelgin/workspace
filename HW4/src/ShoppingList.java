@@ -4,8 +4,7 @@
  * CS 232 HW4
  * 
  * ShoppingList gets a list of available items, has user input items they want to purchase, verifies the items are available,
- * verifies funds are available and has user set a priority for each item if the total exceeds available funds. 
- * The goShopping method then loops through items in order of priority 1st, then by cost to show remaining balance after each item.  
+ * verifies funds are available and has user set a priority for each item if the total exceeds available funds.  
  */
 
 

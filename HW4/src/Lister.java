@@ -1,3 +1,13 @@
+/**
+ * July 25, 2013
+ * Grant Elgin
+ * CS 232 HW4
+ * 
+ *  Lister contains all of the methods for creating a shopping list and using a FundsAccount to purchase a list of Items. 
+ *  
+ */
+ 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -23,9 +33,6 @@ public abstract class Lister {
 		
 		System.out.println();	
 	}
-	
-	
-	
 	
 	public static void checkFunds(double listCost, Item[] listItem) {
 		FundsAccount funds = new FundsAccount();
@@ -113,30 +120,35 @@ public abstract class Lister {
 		// prompt the user to set the priority for the items in their list
 		for (int x = 0; x < 7; x++) {	
 			System.out.print("Enter the priority for " + listItem[x].getName() + ": ");
-			inputInt = keyboard.nextInt();
-			//boolean validItem = false;
-			//
-			sortedPriority[x] = inputInt;
-			System.out.println(listItem[x].getName() + " priority: " + sortedPriority[x]);
-			listItem[x].setPriority(sortedPriority[x]);
+			try {
+				inputInt = keyboard.nextInt();
+				sortedPriority[x] = inputInt;
+				System.out.println(listItem[x].getName() + " priority: " + sortedPriority[x]);
+				listItem[x].setPriority(sortedPriority[x]);
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Please enter an integer.");
+				inputInt = keyboard.nextInt();
+			}
 					
 		}
 		sortBubble(listItem, funds);
 		goShopping(listItem, funds);
 	}
 	
-	public static void printPriority(Item[] listItem) {
+	/* For debugging - print out priority for each item in the list. 
+	 * public static void printPriority(Item[] listItem) {
 		for (int x = 0; x < listItem.length; x++) {
 			System.out.print(listItem[x].getPriority() + " ");
 		}
 		System.out.println();
-	}
+	}*/
 	
 	public static void sortBubble(Item[] listItem, FundsAccount funds) {
 		int x;
 		boolean flag = true;
 		Item temp;
-		printPriority(listItem);
+		//printPriority(listItem);
 		while (flag) {
 			flag = false;
 			for ( x = 0; x < listItem.length - 1; x++) {
@@ -147,7 +159,7 @@ public abstract class Lister {
 					flag = true;
 				}
 			}
-			printPriority(listItem);
+			//printPriority(listItem);
 			
 			
 		}

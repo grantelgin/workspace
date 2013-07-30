@@ -5,6 +5,8 @@ import java.util.Scanner;
  * Grant Elgin
  * CS 232 HW4
  *  
+ *  FundsAccount extends Account class and allows the user to create a new Account to be used for purchasing items within the application. 
+ *  
  */
 
 public class FundsAccount extends Account {
@@ -24,22 +26,6 @@ public class FundsAccount extends Account {
 		super(initialChartCode, initialAccountType);
 		availableFunds = initialFunds;
 		accountName = initialAccountName;
-	}
-	
-	public boolean equals(FundsAccount otherAccount) {
-		return (this.accountName.equalsIgnoreCase(otherAccount.accountName));
-	}
-
-	public double getAvailableFunds() {
-		return availableFunds;
-	}
-
-	public void setAvailableFunds(double availableFunds) {
-		this.availableFunds = availableFunds;
-	}
-	
-	public void writeOutput() {
-		System.out.println("account name: " + accountName + "\nChart of Accounts Code: " + super.getChartOfAccountsCode() + "\nAccount Type: " + super.getAccountType() + "\nAvailable Funds: $ " + availableFunds);
 	}
 	
 	public FundsAccount createFundsAccount(){
@@ -70,6 +56,22 @@ public class FundsAccount extends Account {
 		
 		return nfa;
 			
+	}
+	
+	public boolean equals(FundsAccount otherAccount) {
+		return (this.accountName.equalsIgnoreCase(otherAccount.accountName));
+	}
+
+	public double getAvailableFunds() {
+		return availableFunds;
+	}
+
+	public void setAvailableFunds(double availableFunds) {
+		this.availableFunds = availableFunds;
+	}
+	
+	public void writeOutput() {
+		System.out.println("account name: " + accountName + "\nChart of Accounts Code: " + super.getChartOfAccountsCode() + "\nAccount Type: " + super.getAccountType() + "\nAvailable Funds: $ " + availableFunds);
 	}
 	
 }

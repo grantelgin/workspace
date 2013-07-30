@@ -3,18 +3,19 @@
  * Grant Elgin
  * CS 232 HW4
  * 
- * ShoppingList gets a list of available items, has user input items they want to purchase, verifies the items are available,
- * verifies funds are available and has user set a priority for each item if the total exceeds available funds. 
- * The goShopping method then loops through items in order of priority 1st, then by cost to show remaining balance after each item.  
+ * The Account class allows the user to define a new Asset or Liability account, assign an account code, and verify the new account code is not already in use. 
+ * 
  */	
 
 public class Account implements AccountInterface {
-private int chartOfAccountsCode;
-private String AccountType;
+	private int chartOfAccountsCode;
+	private String AccountType;
 
-public boolean verifyAccount(Account otherAccount) {
-	return (this.chartOfAccountsCode == otherAccount.chartOfAccountsCode);
-}
+	public boolean verifyAccount(Account otherAccount) {
+		// accounts only need to be compared on their Chart of Accounts code. Account Type is not a unique property.
+		return (this.chartOfAccountsCode == otherAccount.chartOfAccountsCode);
+	}
+	
 	public Account() {
 		setChartOfAccountsCode(-1);
 		setAccountType("undefined Account");
