@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-/*
- * July 14, 2013
+/**
+ * July 25, 2013
  * Grant Elgin
- * CS 232 HW3
+ * CS 232 HW4
  *  
  */
 

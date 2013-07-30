@@ -1,7 +1,7 @@
-/*
- * July 14, 2013
+/**
+ * July 25, 2013
  * Grant Elgin
- * CS 232 HW3
+ * CS 232 HW4
  * 
  * ShoppingList gets a list of available items, has user input items they want to purchase, verifies the items are available,
  * verifies funds are available and has user set a priority for each item if the total exceeds available funds. 
