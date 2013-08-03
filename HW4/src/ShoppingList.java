@@ -21,6 +21,7 @@ public class ShoppingList extends Lister {
 		// then get input from user to build shopping list
 		sp.buildItemList();
 		System.out.println("Would you like to build a 2nd list? Enter 'yes' or 'no'");
+		keyboard.nextLine();
 		String nextList = keyboard.nextLine();
 		if (nextList.equalsIgnoreCase("yes")) {	
 		ShoppingList sp2 = new ShoppingList();
