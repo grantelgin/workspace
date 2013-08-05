@@ -12,18 +12,75 @@ import java.util.InputMismatchException;
 
 public class ShoppingList extends Lister {
 
-	public ShoppingList next;
-	public String name;
-	public double price;
+private ListNode head;
 	
-	public ShoppingList() {
-		
-	}
-	public ShoppingList(Item i) {
-		this.name = i.getName().toString();
-		this.price = i.getPrice();
+	public ShoppingList()
+	{
+		head = null;
 	}
 	
+	/**
+	Displays the data on the list
+	*/
+	public void showList()
+	 {
+		ListNode position = head;
+		while (position != null)
+		{
+			System.out.println(position.getData());
+			position = position.getLink();
+		}
+	 }
+	 
+	 public int length()
+	 { 
+		int count  = 0;
+		ListNode position = head;
+		while (position != null)
+		{
+			count++;
+			position = position.getLink();
+		}
+		return count;
+	 }
+	 
+	 public void addANodeToStart(Item addData)
+	 {
+		head = new ListNode(addData, head);
+	 }
+	 
+	 public void deleteHeadNode()
+	 {
+		if (head != null)
+			head = head.getLink();
+		else
+		{
+			System.out.println("Deleting from an empty list.");
+			System.exit(0);
+		}
+	 }
+	 
+	 public boolean onList(Item target)
+	 {  
+		return find(target) != null; 
+	 }
+	 
+	 private ListNode find(Item target)
+	 {
+		boolean found = false; 
+		ListNode position = head; 
+		while ((position != null) && !found)
+		{
+			Item dataAtPosition = position.getData();
+			if (dataAtPosition.equals(target))
+				found = true;
+			else 
+				position = position.getLink();
+		}
+		return position;
+	 }
+	 
+
 	
 	public static void main(String[] args) {
 
@@ -59,12 +116,6 @@ public class ShoppingList extends Lister {
 		}
 		printTableTotal(totalCost);
 	}
-	
-public void display(){
-		
-		System.out.println( name + ": is ym name" + price + " is yo price");
-		
-	}
 
 	public static void printTableTotal(double total) {
 		System.out.printf("\n%91s $ %6.2f\n", "TOTAL:", total);
@@ -82,8 +133,7 @@ public void display(){
 		String inputName;
 		int qty;
 		ArrayList<Item> al = new ArrayList<Item>(20);
-		LinkList theLinkedList = new LinkList();
-		
+		ShoppingList theLinkedList = new ShoppingList();
 		// prompt user to input the 7 items they want to add to list
 		for (int x = 0; x < 7; x++) {
 			System.out.print("Enter an item name: ");
@@ -110,9 +160,8 @@ public void display(){
 						qty = keyboard.nextInt();
 						anItem.setQty(qty);
 						al.add(anItem);
-						theLinkedList.insertFirstLink(anItem);
-						theLinkedList.find(anItem).name = anItem.getName();
-						theLinkedList.find(anItem).price = anItem.getPrice();
+						theLinkedList.addANodeToStart(anItem);
+						
 					}
 					catch (InputMismatchException e) {
 						validItem = false;
@@ -128,11 +177,8 @@ public void display(){
 				System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, al.get(x).getName(), "price:", al.get(x).getPrice());
 				try {
 					System.out.println("listNodeYall:");
-					System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, theLinkedList.find(anItem).name, "price:", + theLinkedList.find(anItem).price);
-					while (theLinkedList.firstLink != null) {
-						display();
-						
-					}
+					System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, theLinkedList.find(anItem).getData().getName(), "price:", + theLinkedList.find(anItem).getData().getPrice());
+					
 					keyboard.nextLine();
 					
 				}
