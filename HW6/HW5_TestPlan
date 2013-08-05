@@ -1,0 +1,20 @@
+Grant Elgin
+HW 5 Test Plan
+
+Happy case:
+1: Enter a name of an item. Return. Enter an int for Qty. Return. Repeat for a total of 7 items presented in the list. Do not repeat item names.
+2: When prompted for a funds account, select either a new account or the default account by entering the appropriate keyword.
+3: If default is selected, the cost of the 7 items will exceed the budget of $ 59.00. Proceed with setting priority.
+4: Enter the name of an item with top priority on the selected item list. Return. Enter the name of the next highest priority item. Repeat for 7 total items.
+5: If new is selected, enter details for a new fundsAccount.
+6: If the cost of the items exceeds the fundsAvailable, set the item priority. 
+7: View purchased items and remaining items.
+
+
+Edge Cases:
+1: Enter a name of an item not on the list.
+2: Enter a string as qty.
+3: Misspell an item. 
+4: Enter negative funds into a new account.
+5: Misspell an item on priority list. 
+6: Enter letters where numbers are asked for.
