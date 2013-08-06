@@ -12,7 +12,7 @@ import java.util.InputMismatchException;
 
 public class ShoppingList extends Lister {
 
-private ListNode head;
+private static ListNode head;
 	
 	public ShoppingList()
 	{
@@ -44,7 +44,7 @@ private ListNode head;
 		return count;
 	 }
 	 
-	 public void addANodeToStart(Item addData)
+	 public void insertFirstNode(Item addData)
 	 {
 		head = new ListNode(addData, head);
 	 }
@@ -107,6 +107,19 @@ private ListNode head;
 		System.out.printf("%-10d%-10d%-38s$ %8.2f%10s          $%13.2f%n", desc1, p, desc2, d, q, f);
 	}
 
+	public static void printItemTable(ShoppingList theLinkedList, double totalCost) {
+		double totalItemCost;
+		printColumnHeading("Item #", "Priority", "Name", "Unit Price", "Qty", "Item Total");
+		ListNode position = head;
+		
+		while (position != null) {
+			Item dataAtPosition = position.getData();
+			totalItemCost = Lister.calcTotalItemCost(dataAtPosition.getPrice(), dataAtPosition.getQty());
+			printRow(1, dataAtPosition.getPriority(), dataAtPosition.getName(), dataAtPosition.getPrice(), dataAtPosition.getQty(), totalItemCost);
+			position = position.getLink();
+		}
+		printTableTotal(totalCost);
+	}
 	public static void printItemTable(ArrayList<Item> al, double totalCost) {
 		double totalItemCost;
 		printColumnHeading("Item #", "Priority", "Name", "Unit Price", "Qty", "Item Total");
@@ -132,7 +145,7 @@ private ListNode head;
 		Item anItem = new Item();
 		String inputName;
 		int qty;
-		ArrayList<Item> al = new ArrayList<Item>(20);
+		//ArrayList<Item> al = new ArrayList<Item>(20);
 		ShoppingList theLinkedList = new ShoppingList();
 		// prompt user to input the 7 items they want to add to list
 		for (int x = 0; x < 7; x++) {
@@ -150,7 +163,7 @@ private ListNode head;
 			else {
 				//
 				// check to see if item has already been added to list
-				if (al.contains(anItem)) {
+				if (theLinkedList.onList(anItem)) {
 					System.out.println("You have already added " + anItem.getName() + " to your list. Please select a different item.");
 					validItem = false;
 				}
@@ -159,8 +172,8 @@ private ListNode head;
 						System.out.println("Qty: ");
 						qty = keyboard.nextInt();
 						anItem.setQty(qty);
-						al.add(anItem);
-						theLinkedList.addANodeToStart(anItem);
+						//al.add(anItem);
+						theLinkedList.insertFirstNode(anItem);
 						
 					}
 					catch (InputMismatchException e) {
@@ -173,17 +186,18 @@ private ListNode head;
 
 			// if item is valid, add to list and continue for loop
 			if (validItem) {
-				System.out.println("added:");
-				System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, al.get(x).getName(), "price:", al.get(x).getPrice());
+				
+				//System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, al.get(x).getName(), "price:", al.get(x).getPrice());
 				try {
-					System.out.println("listNodeYall:");
+					System.out.println("added:");
 					System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, theLinkedList.find(anItem).getData().getName(), "price:", + theLinkedList.find(anItem).getData().getPrice());
 					
 					keyboard.nextLine();
 					
 				}
 				catch (NullPointerException e) {
-					System.out.println("Why dis null?");
+					System.out.println("Woops! Something went wrong!\nException: " + e.toString());
+					
 				}
 			}
 			// if item is not valid, repeat for current item
@@ -192,12 +206,12 @@ private ListNode head;
 		}
 
 		// calculate the total cost and display to user
-		double listCost = calcTotalCost(al);
-		printItemTable(al, listCost);
+		double listCost = calcTotalCost(theLinkedList);
+		printItemTable(theLinkedList, listCost);
 		System.out.println();
 
 		// verify funds are available
-		checkFunds(listCost, al);
+		checkFunds(listCost, theLinkedList);
 	}
 
 
