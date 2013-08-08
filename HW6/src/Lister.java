@@ -1,7 +1,7 @@
 /**
  * Aug 3, 2013
  * Grant Elgin
- * CS 232 HW5
+ * CS 232 HW6
  * 
  *  Lister contains all of the methods for creating a shopping list and using a FundsAccount to purchase a list of Items. 
  *  
@@ -16,7 +16,6 @@ public abstract class Lister  {
 	private double totalCost;
 	private String name;
 	protected static ListNode head;
-	protected static ListNode next;
 	
 	public Lister() {
 		totalCost = -1;
@@ -87,6 +86,7 @@ public abstract class Lister  {
 		while (position != null)
 		{
 			Item dataAtPosition = position.getData();
+			System.out.println("Priority 1 is the highest priority. Priority 2 is 2nd in line, etc. A higher number = lower priority.");
 			System.out.print("\nEnter the priority for " + theLinkedList.find(dataAtPosition).getData().getName() + ": ");
 			try {
 			priority = keyboard.nextInt();
@@ -97,17 +97,37 @@ public abstract class Lister  {
 			System.out.printf("%10d%25s%25d%6.2f\n", 1, theLinkedList.find(dataAtPosition).getData().getName(), theLinkedList.find(dataAtPosition).getData().getPriority(), theLinkedList.find(dataAtPosition).getData().getPrice());
 			}
 			catch (InputMismatchException e){
-				System.out.println("Woops! Please enter an integer to se the priority");
+				System.out.println("Woops! Please enter an integer to set the priority");
 				keyboard.nextLine();
 				//x--;
 			}
 			position = position.getLink();
 		}	
-			//sortBubble(al, funds);
+			
 		double totalCost = Lister.calcTotalCost(theLinkedList);
-		ShoppingList.printItemTable(theLinkedList, totalCost);
+		ShoppingList sortedList = BubbleSort.bubbleSort(convertLinkedListToArrayList(theLinkedList));
+		PrintOut.printItemTable(sortedList, totalCost);
+		
 		ShoppingList.goShopping(theLinkedList, funds);
 	}
+	
+	public static ArrayList<Item> convertLinkedListToArrayList(ShoppingList theLinkedList) {
+		ArrayList<Item> al = new ArrayList<Item>();
+		ListNode position = head;
+		
+		while (position != null) {
+			Item dataAtPosition = position.getData();
+			al.add(theLinkedList.find(dataAtPosition).getData());
+			position = position.getLink();
+		}
+		return al;
+	}
+	
+	public static ShoppingList convertArrayListToLinkedList(ArrayList<Item> al) {
+		ShoppingList convertedList = new ShoppingList();
+		return convertedList;
+	}
+	
 	
 
 	public static void goShopping(ShoppingList theLinkedList, FundsAccount funds) {
@@ -115,14 +135,14 @@ public abstract class Lister  {
 		String unPurchasedItems = "";
 		ListNode position = head;
 		ArrayList<Item> unPurchased = new ArrayList<Item>();
-		ShoppingList.printColumnHeading("Item #", "Priority", "Name", "Unit Price", "Qty", "Item Total");
+		PrintOut.printColumnHeading("Item #", "Priority", "Name", "Unit Price", "Qty", "Item Total");
 		System.out.println("Purchased items:\n ");
 		 
 		while (position != null)
 		{
 			Item dataAtPosition = position.getData();
 			if (calcTotalItemCost(theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty()) <= availFunds) {
-				ShoppingList.printRow(1, theLinkedList.find(dataAtPosition).getData().getPriority(), theLinkedList.find(dataAtPosition).getData().getName(), theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty(), Lister.calcTotalItemCost(theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty()));
+				PrintOut.printRow(1, theLinkedList.find(dataAtPosition).getData().getPriority(), theLinkedList.find(dataAtPosition).getData().getName(), theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty(), Lister.calcTotalItemCost(theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty()));
 				availFunds = (availFunds - calcTotalItemCost(theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty()));
 			}
 			else {
@@ -133,7 +153,7 @@ public abstract class Lister  {
 		// if there are items in the list that were not purchased, display them to the user. 
 				System.out.println("Items remaining to be purchased:\n " + unPurchasedItems);
 				for (int u = 0; u < unPurchased.size(); u++) {
-					ShoppingList.printRow(u + 1, unPurchased.get(u).getPriority(), unPurchased.get(u).getName(), unPurchased.get(u).getPrice(), unPurchased.get(u).getQty(), Lister.calcTotalItemCost(unPurchased.get(u).getPrice(), unPurchased.get(u).getQty()));
+					PrintOut.printRow(u + 1, unPurchased.get(u).getPriority(), unPurchased.get(u).getName(), unPurchased.get(u).getPrice(), unPurchased.get(u).getQty(), Lister.calcTotalItemCost(unPurchased.get(u).getPrice(), unPurchased.get(u).getQty()));
 				}
 				
 				System.out.printf("\nRemaining account balance: $%10.2f", availFunds);

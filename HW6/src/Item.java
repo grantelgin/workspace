@@ -1,7 +1,7 @@
 /**
  * Aug 3, 2013
  * Grant Elgin
- * CS 232 HW5
+ * CS 232 HW6
  * 
  * The Item class includes the validateItem method where all available items are defined with a name and a price.
  * The listAvailableItems method returns a list of item names for the user to view.

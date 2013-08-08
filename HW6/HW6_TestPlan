@@ -1,5 +1,5 @@
 Grant Elgin
-HW 5 Test Plan
+HW 6 Test Plan
 
 Happy case:
 1: Enter a name of an item. Return. Enter an int for Qty. Return. Repeat for a total of 7 items presented in the list. Do not repeat item names.

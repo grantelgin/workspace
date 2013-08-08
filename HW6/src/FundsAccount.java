@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Aug 3, 2013
  * Grant Elgin
- * CS 232 HW5
+ * CS 232 HW6
  *  
  *  FundsAccount extends Account class and allows the user to create a new Account to be used for purchasing items within the application. 
  *  

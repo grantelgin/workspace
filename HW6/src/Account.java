@@ -1,7 +1,7 @@
 /**
  * Aug 3, 2013
  * Grant Elgin
- * CS 232 HW5
+ * CS 232 HW6
  * 
  * The Account class allows the user to define a new Asset or Liability account, assign an account code, and verify the new account code is not already in use. 
  * 
