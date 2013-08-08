@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -31,11 +32,13 @@ public class FundsAccount extends Account {
 	public FundsAccount createFundsAccount(){
 		FundsAccount nfa = new FundsAccount();
 		int coa = -1;
+		boolean validAccount = true;
 		
 		System.out.println("Create a new account. Enter the account name, account type, chart of accounts code and available balance when prompted.\n");
 		System.out.print("Account name: ");
 		String newAccountName = keyboard.nextLine();
 		System.out.print("Account type (Enter 'Asset' or 'Liability'): ");
+		try {
 		String newAccountType = keyboard.nextLine();
 		
 		if (newAccountType.equalsIgnoreCase("Asset")) {
@@ -46,6 +49,8 @@ public class FundsAccount extends Account {
 			System.out.print("Chart of Accounts Code (Select a code between 200 and 299): ");
 			coa = keyboard.nextInt();
 		}
+		if (newAccountType.equalsIgnoreCase("exit"))
+			System.exit(0);
 		
 		System.out.print("Available funds: $ ");
 		nfa.setAvailableFunds(keyboard.nextDouble());
@@ -54,7 +59,17 @@ public class FundsAccount extends Account {
 		nfa.setAccountType(newAccountType);
 		nfa.setChartOfAccountsCode(coa);
 		
-		return nfa;
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Uh Oh! Something went wrong. Please enter the account balance in US dollars.");
+			validAccount = false;
+		}
+		if (validAccount)
+			return nfa;
+		else {
+			keyboard.nextLine();
+			return createFundsAccount();
+		}
 			
 	}
 	
@@ -67,7 +82,12 @@ public class FundsAccount extends Account {
 	}
 
 	public void setAvailableFunds(double availableFunds) {
+		try {
 		this.availableFunds = availableFunds;
+		}
+		catch (InputMismatchException e) {
+			System.out.println("exception");
+		}
 	}
 	
 	public void writeOutput() {

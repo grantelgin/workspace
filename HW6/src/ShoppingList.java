@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.InputMismatchException;
 
 /**
@@ -11,8 +11,6 @@ import java.util.InputMismatchException;
  */
 
 public class ShoppingList extends Lister {
-
-private static ListNode head;
 	
 	public ShoppingList()
 	{
@@ -65,7 +63,7 @@ private static ListNode head;
 		return find(target) != null; 
 	 }
 	 
-	 private ListNode find(Item target)
+	 public ListNode find(Item target)
 	 {
 		boolean found = false; 
 		ListNode position = head; 
@@ -82,7 +80,7 @@ private static ListNode head;
 	 
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IntegerException {
 
 		ShoppingList sp = new ShoppingList();
 
@@ -114,22 +112,13 @@ private static ListNode head;
 		
 		while (position != null) {
 			Item dataAtPosition = position.getData();
-			totalItemCost = Lister.calcTotalItemCost(dataAtPosition.getPrice(), dataAtPosition.getQty());
-			printRow(1, dataAtPosition.getPriority(), dataAtPosition.getName(), dataAtPosition.getPrice(), dataAtPosition.getQty(), totalItemCost);
+			totalItemCost = Lister.calcTotalItemCost(theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty());
+			printRow(1, theLinkedList.find(dataAtPosition).getData().getPriority(), theLinkedList.find(dataAtPosition).getData().getName(), theLinkedList.find(dataAtPosition).getData().getPrice(), theLinkedList.find(dataAtPosition).getData().getQty(), totalItemCost);
 			position = position.getLink();
 		}
 		printTableTotal(totalCost);
 	}
-	public static void printItemTable(ArrayList<Item> al, double totalCost) {
-		double totalItemCost;
-		printColumnHeading("Item #", "Priority", "Name", "Unit Price", "Qty", "Item Total");
-		for (int x = 0; x < al.size(); x++) {
-			totalItemCost = Lister.calcTotalItemCost(al.get(x).getPrice(), al.get(x).getQty());
-			printRow(x + 1, al.get(x).getPriority(), al.get(x).getName(), al.get(x).getPrice(), al.get(x).getQty(), totalItemCost);
-		}
-		printTableTotal(totalCost);
-	}
-
+	
 	public static void printTableTotal(double total) {
 		System.out.printf("\n%91s $ %6.2f\n", "TOTAL:", total);
 
@@ -145,7 +134,6 @@ private static ListNode head;
 		Item anItem = new Item();
 		String inputName;
 		int qty;
-		//ArrayList<Item> al = new ArrayList<Item>(20);
 		ShoppingList theLinkedList = new ShoppingList();
 		// prompt user to input the 7 items they want to add to list
 		for (int x = 0; x < 7; x++) {
@@ -172,7 +160,6 @@ private static ListNode head;
 						System.out.println("Qty: ");
 						qty = keyboard.nextInt();
 						anItem.setQty(qty);
-						//al.add(anItem);
 						theLinkedList.insertFirstNode(anItem);
 						
 					}
@@ -183,14 +170,13 @@ private static ListNode head;
 
 			}
 
-
 			// if item is valid, add to list and continue for loop
 			if (validItem) {
 				
 				//System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, al.get(x).getName(), "price:", al.get(x).getPrice());
 				try {
 					System.out.println("added:");
-					System.out.printf("item %1s: %-20s%10s $%6.2f\n", x + 1, theLinkedList.find(anItem).getData().getName(), "price:", + theLinkedList.find(anItem).getData().getPrice());
+					System.out.printf("item %1s: %-20s%10s $%6.2f %20s%10.2f \n", x + 1, theLinkedList.find(anItem).getData().getName(), "unit price:", + theLinkedList.find(anItem).getData().getPrice(), "item total: $ ", calcTotalItemCost(theLinkedList.find(anItem).getData().getPrice(), theLinkedList.find(anItem).getData().getQty()));
 					
 					keyboard.nextLine();
 					
