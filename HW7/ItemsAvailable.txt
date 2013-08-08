@@ -1,0 +1,11 @@
+NAME,PRICE
+lumber,34.32
+screws,6.47
+electrical boxes,13.8
+electrical conduit,10.58
+electrical wiring,34.97
+electrical receptacles,1.36
+plumbing supply pipes,9.79
+plumbing waste pipes,8.24
+sheet rock,9.98
+wall finishes,24.98

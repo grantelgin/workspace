@@ -1,0 +1,23 @@
+/*
+ * Aug 3, 2013
+ * Grant Elgin
+ * CS 232 HW7
+ * 
+ */
+ 
+ pseudoCode
+ 1: Display title of program and version. 
+ 2: Prompt user to add items to their shopping list by typing the names of items they need. The list of available items is presented in a list before the input prompt is shown.
+ 3: The user types the name of an item they need and hits return.
+ 4: The user is prompted to enter the Qty of that item. They enter an int for qty and hit return.
+ 5: After each item, check that item matches an item in the list and check to verify item has not already been selected. If item validates, return item name and price. If it does not validate, return list of available items and ask user to re-enter the item.
+ 6: For v 1.0, user is required to create a list of 7 items. 
+ 7: After 7 items are entered, return full list of selected item names, item priority, unit price, qty, total price. 
+ 8: Return total price of selected items. 
+ 9: Prompt user to use a default fundsAccount or to create a new fundsAccount.
+10: Check to see if list total exceeds available budget. If it does, prompt user to set priority of items in list.  
+11: User sets item priority by entering an integer for the item priority.   
+12: Use a bubble sort to loop through items in order of priority and deduct price from available budget. 
+13: If price exceeds available budget, add item to unPurchased items list. If item does not exceed budget, purchase item.  
+14: Return a list of items that were purchased and budget remaining.
+15: Return a list of items not purchased.   
