@@ -1,0 +1,22 @@
+Grant Elgin
+9/4/13
+HW 1 Java term definitions.
+
+A:  protected
+protected is an access level modifier to be used with methods or variables in a class. If a method is declared protected, that method can only be accessed by members of the same package (the same behavior as not declaring a modifier) but it can also be accessed by a sub-class of its class in another package.
+
+
+B: static
+The keyword static is used to declare variables that are shared for all instances of the class. Static variables reference a single object in a specific memory location. All instances of the class use the same original copy of the static variable. If variables are not declared static, each instance of that class will create its own copy of those non-static variables that will have their own location in memory.
+
+
+C: new
+The keyword new is used to instantiate a copy of a class. new is the keyword that allocates the required memory for a class. 
+
+
+D: interface
+An interface provides method declarations and constant declarations that are required to be implemented in classes that extend the interface. Only the declaration of the methods are in an interface. Method bodies are not defined. System architects use interfaces to outline required methods for other team members to implement.
+
+
+E: abstract
+Classes declared as abstract can include method declarations without method bodies (similar to an interface but declared abstract: abstract boolean isASquare(Shape obj);) as well as implemented methods (has method body).   

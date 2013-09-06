@@ -1,0 +1,12 @@
+pseudocode
+
+1: Print welcome message. Provide exit method. 
+2: go to method that selects random number. 
+3: if no error, print I'm thinking of a number, guess.
+4: prompt user to enter a number
+5: validate input. 
+6: if number, add 1 to number of tries. 
+7: Compare guess to random. respond high or low
+8: if guess is correct, display correct message and display how many tries it took.  
+
+class with main, class for user input validation

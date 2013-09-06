@@ -1,0 +1,31 @@
+Grant Elgin
+Sep 5, 2013
+Run 1 ImThinkingOfANumber v1.0
+
+
+ImThinkingOfANumber v1.0
+Type '9999' to exit.
+I'm thinking of a number between 1 and 1000. Guess by entering a number and pressing return.
+500
+Nice try, but the number I'm thinking of is lower than that. Guess again.
+250
+Nice try, but the number I'm thinking of is lower than that. Guess again.
+125
+Too low. The number I'm thinking of is higher. Guess again.
+200
+Too low. The number I'm thinking of is higher. Guess again.
+225
+Too low. The number I'm thinking of is higher. Guess again.
+240
+Too low. The number I'm thinking of is higher. Guess again.
+245
+Nice try, but the number I'm thinking of is lower than that. Guess again.
+244
+Nice try, but the number I'm thinking of is lower than that. Guess again.
+243
+Nice try, but the number I'm thinking of is lower than that. Guess again.
+242
+Nice try, but the number I'm thinking of is lower than that. Guess again.
+241
+That's right! You guessed it!
+It took you 11 tries to guess the number. 
