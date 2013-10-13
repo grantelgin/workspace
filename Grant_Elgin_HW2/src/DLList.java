@@ -30,6 +30,30 @@ public class DLList {
 	// Complete a tail add for this class
 	// and an add after node class
 	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	public void tailAdd(String data) {
 		DLNode n = new DLNode();
 		n.setData(data);

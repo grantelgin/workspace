@@ -1,0 +1,17 @@
+Pseudocode
+
+
+1: print out app instructions & the UI menu.
+2: Prompt the user to load an existing database or create a new one.
+3: display the menu and prompt the user for entry.
+4: menu options include:
+    a: Add a phone number to the list
+    p: Print the entire list
+    s: Search for Name
+    e: Search for email address
+    d: Delete an Entry
+    w: Write the database to a file
+    r: Restore a saved database
+5: if a command is entered without arguments, prompt for appropriate input
+6: If a commend is entered as (option) (argument1) (argument2), confirm action and show result
+7: If Delete is entered, confirm action before performing, if no, return to menu prompt. If yes, confirm action
