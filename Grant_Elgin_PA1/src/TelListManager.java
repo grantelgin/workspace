@@ -110,7 +110,7 @@ public class TelListManager {
 		TelListItem current = head;
 		// for multiple matches store matches in an array, ask user to refine further if necessary.
 		// more work will have to be done on this loop. 
-		for (int x = 0; x < size; x++) {
+		for (int x = 0; x <= size; x++) {
 			if (current.getName() == name)
 				result = current;
 			else 

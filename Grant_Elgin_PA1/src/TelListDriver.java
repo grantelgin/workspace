@@ -20,24 +20,35 @@ public class TelListDriver {
 	public void listenForCommand() {
 		String cmd = keyboard.nextLine();
 		if (cmd.toLowerCase().startsWith("a")) {
-			System.out.println("gonna add phone");
+			// add listen for arguments
+			collectAddInfo();
 		}
 		else if (cmd.toLowerCase().startsWith("p")) {
+			// add listen for arguments
 			System.out.println("gonna print list");
+			currentList.printList();
 		}
 		else if (cmd.toLowerCase().startsWith("s")) {
+			// add listen for arguments
+			System.out.println("Enter a name: ");
+			String name = keyboard.nextLine();
+			currentList.searchByName(name);
 			System.out.println("Searchin for name");
 		}
 		else if (cmd.toLowerCase().startsWith("e")) {
+			// add listen for arguments
 			System.out.println("searchin email");
 		}
 		else if (cmd.toLowerCase().startsWith("d")) {
+			// add listen for arguments
 			System.out.println("deletin");
 		}
 		else if (cmd.toLowerCase().startsWith("w")) {
+			// add listen for arguments
 			System.out.println("writin");
 		}
 		else if (cmd.toLowerCase().startsWith("r")) {
+			// add listen for arguments
 			System.out.println("restorin");
 		}
 		else
@@ -45,6 +56,36 @@ public class TelListDriver {
 		
 		cmd = null;
 		doIt();
+	}
+	
+	public void  collectAddInfo() {
+		System.out.println("Enter name: ");
+		String name = keyboard.nextLine();
+		System.out.println("Enter email for " + name + ":");
+		String email = keyboard.nextLine();
+		System.out.println("Enter phone number for " + name + ":");
+		String number = keyboard.nextLine();
+		System.out.println("Is this correct?");
+		System.out.println("Name: " + name + "\nEmail: " + email + "\nNumber: " + number + "\nEnter Y/N");
+		String confirm = keyboard.next();
+		if (confirm.toLowerCase().startsWith("y")) {
+			TelListItem data = new TelListItem();
+			data.setName(name);
+			data.setEmail(email);
+			data.setPhoneNumber(number);
+			System.out.println("gonna add to list");
+			currentList.headAdd(data);
+			TelListItem added = currentList.searchByName(name);
+			System.out.println("Added to list\nName: " + added.getName() + "\nEmail: " + added.getEmail() + "\nNumber: " + added.getPhoneNumber());
+			
+		}
+		else if (confirm.toLowerCase().startsWith("n")) {
+			System.out.println("not gonna");
+		}
+		else {
+			System.out.println("back to it");
+		}
+		confirm = null;
 	}
 	
 	public void printInstructions() {
