@@ -95,8 +95,8 @@ public class TelListManager {
 		String rtn = "";
 		TelListItem t = head;
 		
-		for (int x = 0; x < size; x++) {
-			rtn += t.getName() + " ";
+		for (int x = 0; x <= size; x++) {
+			rtn += "Name: " + t.getName() + "\nEmail: " + t.getEmail() + "\nPhone number: " + t.getPhoneNumber() + "\n";
 			t = t.getNext();
 		}
 		
@@ -119,6 +119,23 @@ public class TelListManager {
 		
 		return result;
 	}
+	
+	public TelListItem searchByEmail (String email) {
+		TelListItem result = new TelListItem();
+		
+		TelListItem current = head;
+		// for multiple matches store matches in an array, ask user to refine further if necessary.
+		// more work will have to be done on this loop. 
+		for (int x = 0; x <= size; x++) {
+			if (current.getEmail() == email)
+				result = current;
+			else 
+				current = current.getNext();
+		}
+		
+		return result;
+	}
+	
 
 	public void writeOut(TelListManager list, String fileName) {
 		

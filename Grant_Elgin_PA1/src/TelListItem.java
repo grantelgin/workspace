@@ -2,8 +2,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-
-
 public class TelListItem {
 	private String name;
 	private String email;
@@ -51,10 +49,10 @@ public class TelListItem {
 	public boolean setPhoneNumber(String phoneNumber) {
 		boolean isValid = true;
 		
-		if (validatePhoneNumber(phoneNumber))
+		//if (validatePhoneNumber(phoneNumber))
 			this.phoneNumber = phoneNumber;
-		else
-			isValid = false;
+		//else
+		//	isValid = false;
 		
 		return isValid;
 	}

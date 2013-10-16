@@ -18,7 +18,10 @@ public class TelListDriver {
 	}
 	
 	public void listenForCommand() {
+		System.out.println("Enter a command");
+		keyboard.reset();
 		String cmd = keyboard.nextLine();
+		if (!cmd.isEmpty()) {
 		if (cmd.toLowerCase().startsWith("a")) {
 			// add listen for arguments
 			collectAddInfo();
@@ -32,12 +35,16 @@ public class TelListDriver {
 			// add listen for arguments
 			System.out.println("Enter a name: ");
 			String name = keyboard.nextLine();
-			currentList.searchByName(name);
-			System.out.println("Searchin for name");
+			TelListItem found = currentList.searchByName(name);
+			System.out.println("Found: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
+			
 		}
 		else if (cmd.toLowerCase().startsWith("e")) {
 			// add listen for arguments
-			System.out.println("searchin email");
+			System.out.println("Enter an email address: ");
+			String email = keyboard.nextLine();
+			TelListItem found = currentList.searchByEmail(email);
+			System.out.println("Found: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
 		}
 		else if (cmd.toLowerCase().startsWith("d")) {
 			// add listen for arguments
@@ -52,40 +59,55 @@ public class TelListDriver {
 			System.out.println("restorin");
 		}
 		else
-			System.out.println("Uh oh - wrong comand! Please enter a commend from the menu.");
+			System.out.println("Uh oh - wrong comand! Please enter a command from the menu.");
+		}
 		
-		cmd = null;
-		doIt();
+		listenForCommand();
+		
 	}
 	
 	public void  collectAddInfo() {
+		TelListItem data = new TelListItem();
 		System.out.println("Enter name: ");
-		String name = keyboard.nextLine();
-		System.out.println("Enter email for " + name + ":");
-		String email = keyboard.nextLine();
-		System.out.println("Enter phone number for " + name + ":");
-		String number = keyboard.nextLine();
+		data.setName(keyboard.nextLine());
+		System.out.println("Enter email for " + data.getName() + ":");
+		data.setEmail(keyboard.nextLine()); 
+		System.out.println("Enter phone number for " + data.getName() + ":");
+		data.setPhoneNumber(keyboard.nextLine());
+		boolean result = confirmAdd(data);
+		
+		if (result) {
+			TelListItem added = currentList.searchByName(data.getName());
+			System.out.println("Added to list\nName: " + added.getName() + "\nEmail: " + added.getEmail() + "\nNumber: " + added.getPhoneNumber());
+			listenForCommand();
+		}
+		else
+			listenForCommand();
+			
+		
+	}
+	
+	private boolean confirmAdd(TelListItem data) {
 		System.out.println("Is this correct?");
-		System.out.println("Name: " + name + "\nEmail: " + email + "\nNumber: " + number + "\nEnter Y/N");
+		System.out.println("Name: " + data.getName() + "\nEmail: " + data.getEmail() + "\nNumber: " + data.getPhoneNumber() + "\nEnter Y/N");
+		boolean result = true;
 		String confirm = keyboard.next();
 		if (confirm.toLowerCase().startsWith("y")) {
-			TelListItem data = new TelListItem();
-			data.setName(name);
-			data.setEmail(email);
-			data.setPhoneNumber(number);
-			System.out.println("gonna add to list");
+			//TelListItem data = new TelListItem()
+			System.out.println("Adding...\n");
 			currentList.headAdd(data);
-			TelListItem added = currentList.searchByName(name);
-			System.out.println("Added to list\nName: " + added.getName() + "\nEmail: " + added.getEmail() + "\nNumber: " + added.getPhoneNumber());
 			
 		}
 		else if (confirm.toLowerCase().startsWith("n")) {
-			System.out.println("not gonna");
+			System.out.println("cancelled...\n");
+			result = false;
 		}
 		else {
-			System.out.println("back to it");
+			System.out.println("Woops! Please enter Y or N\n");
+			confirmAdd(data);
 		}
-		confirm = null;
+		
+		return result;
 	}
 	
 	public void printInstructions() {
