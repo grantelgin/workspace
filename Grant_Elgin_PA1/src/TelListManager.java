@@ -41,24 +41,25 @@ public class TelListManager {
 		size++;
 	}
 
-	public void deleteTelListItem(String name) {
+	public boolean deleteTelListItem(TelListItem toDelete) {
 		TelListItem current = head;
 		TelListItem next = new TelListItem();
 		TelListItem nextNext = new TelListItem();
 		if (size == 0)
-			return;
+			return false;
 
 		boolean wasDeleted = false;
 
 		//Are we deleting the only item in the list?
-		if (name == current.getName()) {
-			if (current.getNext() == null) {
+		if (toDelete.getName().equalsIgnoreCase(current.getName())) {
+			//if (current.getNext() == null) {
 				head.setName(null);
 				head.setEmail(null);
 				head.setPhoneNumber(null);
 				size--;
-				return;
-			}
+				wasDeleted = true;
+			//}
+			
 		}
 
 		while (true) {
@@ -70,7 +71,7 @@ public class TelListManager {
 			//Check to see if the next node is what were looking for
 			next.setNext(current.getNext());
 			if (next != null) {
-				if (name == next.getName()) {
+				if (toDelete.getName().equalsIgnoreCase(next.getName())) {
 					//found the right one, loop around the node
 					nextNext.setNext(next);
 					current.setNext(nextNext);
@@ -83,6 +84,8 @@ public class TelListManager {
 		}
 		if (wasDeleted)
 			size--;
+		
+		return wasDeleted;
 
 	}
 
@@ -90,18 +93,25 @@ public class TelListManager {
 		return size;
 	}
 	
-	public void printList() {
+	public boolean printList() {
 		// print the entire list
 		String rtn = "";
 		TelListItem t = head;
-		
+		boolean result = true;
+		if (t != null) {
 		for (int x = 0; x <= size; x++) {
 			rtn += "Name: " + t.getName() + "\nEmail: " + t.getEmail() + "\nPhone number: " + t.getPhoneNumber() + "\n";
 			t = t.getNext();
 		}
 		
 		System.out.println(rtn);
-	
+		}
+		else {
+			System.out.println("The current list is empty. Select a list to print or add items to the current list.\n");
+			result = false;
+		}
+		
+		return result;
 	}
 	
 	public TelListItem searchByName (String name) {
@@ -111,7 +121,7 @@ public class TelListManager {
 		// for multiple matches store matches in an array, ask user to refine further if necessary.
 		// more work will have to be done on this loop. 
 		for (int x = 0; x <= size; x++) {
-			if (current.getName() == name)
+			if (current.getName().equalsIgnoreCase(name))
 				result = current;
 			else 
 				current = current.getNext();
@@ -127,7 +137,7 @@ public class TelListManager {
 		// for multiple matches store matches in an array, ask user to refine further if necessary.
 		// more work will have to be done on this loop. 
 		for (int x = 0; x <= size; x++) {
-			if (current.getEmail() == email)
+			if (current.getEmail().equalsIgnoreCase(email))
 				result = current;
 			else 
 				current = current.getNext();

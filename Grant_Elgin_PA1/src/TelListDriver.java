@@ -28,8 +28,12 @@ public class TelListDriver {
 		}
 		else if (cmd.toLowerCase().startsWith("p")) {
 			// add listen for arguments
-			System.out.println("gonna print list");
-			currentList.printList();
+			boolean result = currentList.printList();
+			if (result)
+				listenForCommand();
+			else 
+				listenForCommand();
+			
 		}
 		else if (cmd.toLowerCase().startsWith("s")) {
 			// add listen for arguments
@@ -48,7 +52,19 @@ public class TelListDriver {
 		}
 		else if (cmd.toLowerCase().startsWith("d")) {
 			// add listen for arguments
-			System.out.println("deletin");
+			System.out.println("Enter name of record to be deleted: ");
+			String nameToDelete = keyboard.nextLine();
+			System.out.println("Searching...");
+			TelListItem found = currentList.searchByName(nameToDelete);
+			//System.out.println("Found: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
+			boolean result = confirmDelete(found);
+			if (result)
+				listenForCommand();
+			else {
+				System.out.println("Something went wrong... Please try your command again.");
+				listenForCommand();
+			}
+
 		}
 		else if (cmd.toLowerCase().startsWith("w")) {
 			// add listen for arguments
@@ -57,6 +73,14 @@ public class TelListDriver {
 		else if (cmd.toLowerCase().startsWith("r")) {
 			// add listen for arguments
 			System.out.println("restorin");
+		}
+		else if (cmd.equalsIgnoreCase("menu")) {
+			printMenu();
+			listenForCommand();
+		}
+		else if (cmd.equalsIgnoreCase("quit")) {
+			System.out.println("Quitting program");
+			System.exit(0);
 		}
 		else
 			System.out.println("Uh oh - wrong comand! Please enter a command from the menu.");
@@ -105,6 +129,30 @@ public class TelListDriver {
 		else {
 			System.out.println("Woops! Please enter Y or N\n");
 			confirmAdd(data);
+		}
+		
+		return result;
+	}
+	
+	private boolean confirmDelete(TelListItem data) {
+		System.out.println("Is this the correct record to delete?");
+		System.out.println("Name: " + data.getName() + "\nEmail: " + data.getEmail() + "\nNumber: " + data.getPhoneNumber() + "\nEnter Y/N");
+		boolean result = true;
+		String confirm = keyboard.next();
+		if (confirm.toLowerCase().startsWith("y")) {
+			//TelListItem data = new TelListItem()
+			System.out.println("Deleting...\n");
+			boolean isDeleted = currentList.deleteTelListItem(data);
+			if (!isDeleted)
+				result = false;
+		}
+		else if (confirm.toLowerCase().startsWith("n")) {
+			System.out.println("cancelled...\n");
+			result = false;
+		}
+		else {
+			System.out.println("Woops! Please enter Y or N\n");
+			confirmDelete(data);
 		}
 		
 		return result;
