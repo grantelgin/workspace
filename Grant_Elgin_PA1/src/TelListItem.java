@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class TelListItem {
+public class TelListItem implements Serializable {
 	private String name;
 	private String email;
 	private String phoneNumber;
@@ -20,6 +21,8 @@ public class TelListItem {
 		setName(data.name);
 		setEmail(data.email);
 		setPhoneNumber(data.phoneNumber);
+		setNext(data.next);
+		setPrev(data.prev);
 	}
 	
 	public String getName() {

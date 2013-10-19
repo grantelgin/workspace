@@ -5,11 +5,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class TelListManager {
+public class TelListManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TelListItem head;
 	private TelListItem tail;
 	private int size;
@@ -43,24 +48,32 @@ public class TelListManager {
 
 	public boolean deleteTelListItem(TelListItem toDelete) {
 		TelListItem current = head;
-		TelListItem next = new TelListItem();
+		TelListItem nextItem = new TelListItem();
 		TelListItem nextNext = new TelListItem();
 		if (size == 0)
 			return false;
 
 		boolean wasDeleted = false;
-
+		
 		//Are we deleting the only item in the list?
 		if (toDelete.getName().equalsIgnoreCase(current.getName())) {
-			//if (current.getNext() == null) {
+			if (current.getNext() == null) {
 				head.setName(null);
 				head.setEmail(null);
 				head.setPhoneNumber(null);
-				size--;
 				wasDeleted = true;
-			//}
+				
+			}
+			else {
+				head.setListItem(current.getNext());
+				current = null;
+				wasDeleted = true;
+				
+			}
 			
 		}
+		else {
+		
 
 		while (true) {
 			//If end of list - stop
@@ -68,19 +81,27 @@ public class TelListManager {
 				wasDeleted = false;
 				break;
 			}
+			
 			//Check to see if the next node is what were looking for
-			next.setNext(current.getNext());
-			if (next != null) {
-				if (toDelete.getName().equalsIgnoreCase(next.getName())) {
+			nextItem.setListItem(current.getNext());
+			if (nextItem != null) {
+				if (toDelete.getName().equalsIgnoreCase(nextItem.getName())) {
 					//found the right one, loop around the node
-					nextNext.setNext(next);
+					if (nextItem.getNext() != null) {
+					nextNext.setListItem(nextItem.getNext());
 					current.setNext(nextNext);
-					next = null;
+					nextNext.setPrev(current);
+					}
+					else {
+						current.setNext(null);
+					}
+					nextItem = null;
 					wasDeleted = true;
 					break;
 				}
 			}
 			current = current.getNext();
+		}
 		}
 		if (wasDeleted)
 			size--;
@@ -147,12 +168,10 @@ public class TelListManager {
 	}
 	
 
-	public void writeOut(TelListManager list, String fileName) {
+	public boolean writeOut(TelListManager list, String fileName) {
+		boolean result = true;
 		
-		if (getCurrentFileName() == ""){
-			String currentTime = new SimpleDateFormat("yyyyMMddkkmmss").format(new Date());
-			setCurrentFileName(currentTime);
-		}
+		setCurrentFileName(fileName);
 		
 		File f = new File(getCurrentFileName());
 		
@@ -191,6 +210,8 @@ public class TelListManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return result;
 
 	}
 	
@@ -242,6 +263,11 @@ public class TelListManager {
 	}
 
 	public String getCurrentFileName() {
+		if (currentFileName == "") {
+			String currentTime = new SimpleDateFormat("yyyyMMddkkmmss").format(new Date());
+			setCurrentFileName(currentTime);
+		}
+		
 		return currentFileName;
 	}
 
