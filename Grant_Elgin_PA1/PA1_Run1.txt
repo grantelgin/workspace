@@ -1,0 +1,280 @@
+Telephone List Manager v1.0
+Type 'quit' to exit program.
+Type 'menu' to see the menu
+Menu
+a  Add a phone number to the list
+p  Print the entire list
+s  Search for a name
+e  Search for email address
+d  Delete an Entry
+w  Write the database to a file
+r  Restore a saved database
+Enter a command
+
+a
+Enter name: 
+Grant Elgin
+Enter email for Grant Elgin:
+elgin@bu.edu
+Enter phone number for Grant Elgin:
+508-326-3854
+Is this correct?
+Name: Grant Elgin
+Email: elgin@bu.edu
+Number: 508-326-3854
+Enter Y/N
+y
+Adding...
+
+Added to list
+Name: Grant Elgin
+Email: elgin@bu.edu
+Number: 508-326-3854
+Enter a command
+
+Enter a command
+
+a
+Enter name: 
+Katie Allen
+Enter email for Katie Allen:
+katie@katieallendesign.com
+Enter phone number for Katie Allen:
+469-222-8451
+Is this correct?
+Name: Katie Allen
+Email: katie@katieallendesign.com
+Number: 469-222-8451
+Enter Y/N
+y
+Adding...
+
+Added to list
+Name: Katie Allen
+Email: katie@katieallendesign.com
+Number: 469-222-8451
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Katie Allen              katie@katieallendesign.com    469-222-8451        
+2       Grant Elgin              elgin@bu.edu                  508-326-3854        
+
+Enter a command
+
+a
+Enter name: 
+Joseph Warren
+Enter email for Joseph Warren:
+jo@grantelgin.com
+Enter phone number for Joseph Warren:
+617-555-1212
+Is this correct?
+Name: Joseph Warren
+Email: jo@grantelgin.com
+Number: 617-555-1212
+Enter Y/N
+y
+Adding...
+
+Added to list
+Name: Joseph Warren
+Email: jo@grantelgin.com
+Number: 617-555-1212
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Joseph Warren            jo@grantelgin.com             617-555-1212        
+2       Katie Allen              katie@katieallendesign.com    469-222-8451        
+3       Grant Elgin              elgin@bu.edu                  508-326-3854        
+
+Enter a command
+
+s
+Enter a name: 
+Grant Elgin
+Found...
+Name: Grant Elgin
+Email: elgin@bu.edu
+Phone number: 508-326-3854
+Enter a command
+
+s
+Enter a name: 
+Katie Allen
+Found...
+Name: Katie Allen
+Email: katie@katieallendesign.com
+Phone number: 469-222-8451
+Enter a command
+
+e
+Enter an email address: 
+elgin@bu.edu
+Found...
+Name: Grant Elgin
+Email: elgin@bu.edu
+Phone number: 508-326-3854
+Enter a command
+
+d
+Enter name of record to be deleted: 
+Grant Elgin
+Searching...
+Is this the correct record to delete?
+Name: Grant Elgin
+Email: elgin@bu.edu
+Number: 508-326-3854
+Enter Y/N
+y
+Deleting...
+
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Joseph Warren            jo@grantelgin.com             617-555-1212        
+2       Katie Allen              katie@katieallendesign.com    469-222-8451        
+
+Enter a command
+
+w
+Write the database to a file...
+The current file name is: 20131022130450
+Would you like to save to that file?
+Enter y for yes. Enter f to provide a new file name.
+Enter n to cancel
+f
+Enter a new file name:
+
+grantsList
+Writing to 'grantsList'...
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Joseph Warren            jo@grantelgin.com             617-555-1212        
+2       Katie Allen              katie@katieallendesign.com    469-222-8451        
+
+Enter a command
+
+a
+Enter name: 
+Paul Revere
+Enter email for Paul Revere:
+paul@gmail.com
+Enter phone number for Paul Revere:
+617-222-1414
+Is this correct?
+Name: Paul Revere
+Email: paul@gmail.com
+Number: 617-222-1414
+Enter Y/N
+y
+Adding...
+
+Added to list
+Name: Paul Revere
+Email: paul@gmail.com
+Number: 617-222-1414
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Paul Revere              paul@gmail.com                617-222-1414        
+2       Joseph Warren            jo@grantelgin.com             617-555-1212        
+3       Katie Allen              katie@katieallendesign.com    469-222-8451        
+
+Enter a command
+
+r
+Enter the name of the file to restore: 
+grantsList
+You've entered items that may not be included in the restored file.
+Enter y to add these items to the restored list. Press n to discard your current items.
+ WARNING! Your current items will be deleted when you enter n.
+
+y
+Adding items to the restored file...
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Katie Allen              katie@katieallendesign.com    469-222-8451        
+2       Joseph Warren            jo@grantelgin.com             617-555-1212        
+3       Paul Revere              paul@gmail.com                617-222-1414        
+4       Joseph Warren            jo@grantelgin.com             617-555-1212        
+5       Katie Allen              katie@katieallendesign.com    469-222-8451        
+
+Enter a command
+
+d
+Enter name of record to be deleted: 
+Joseph Warren
+Searching...
+Is this the correct record to delete?
+Name: Joseph Warren
+Email: jo@grantelgin.com
+Number: 617-555-1212
+Enter Y/N
+y
+Deleting...
+
+Enter a command
+
+Enter a command
+
+d
+Enter name of record to be deleted: 
+Katie Allen
+Searching...
+Is this the correct record to delete?
+Name: Katie Allen
+Email: katie@katieallendesign.com
+Number: 469-222-8451
+Enter Y/N
+y
+Deleting...
+
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Paul Revere              paul@gmail.com                617-222-1414        
+2       Joseph Warren            jo@grantelgin.com             617-555-1212        
+3       Katie Allen              katie@katieallendesign.com    469-222-8451        
+
+Enter a command
+

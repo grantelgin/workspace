@@ -13,7 +13,6 @@ public class TelListDriver implements Serializable {
 	Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args) {
-
 		TelListDriver tld = new TelListDriver();
 		tld.doIt();
 	}
@@ -21,7 +20,6 @@ public class TelListDriver implements Serializable {
 	public void doIt () {
 		printInstructions();
 		listenForCommand();
-
 	}
 	
 	public void listenForCommand() {
@@ -42,7 +40,6 @@ public class TelListDriver implements Serializable {
 				listenForCommand();
 			else 
 				listenForCommand();
-			
 		}
 		else if (cmd.toLowerCase().startsWith("s")) {
 			//TODO add listen for arguments
@@ -50,7 +47,6 @@ public class TelListDriver implements Serializable {
 			String name = keyboard.nextLine();
 			TelListItem found = currentList.searchByName(name);
 			System.out.println("Found...\nName: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
-			
 		}
 		else if (cmd.toLowerCase().startsWith("e")) {
 			//TODO add listen for arguments
@@ -73,7 +69,6 @@ public class TelListDriver implements Serializable {
 				System.out.println("Something went wrong... Please try your command again.");
 				listenForCommand();
 			}
-
 		}
 		else if (cmd.toLowerCase().startsWith("w")) {
 			//TODO add listen for arguments
@@ -118,8 +113,7 @@ public class TelListDriver implements Serializable {
 					System.out.println("Woops! You must confirm what should happen with the current list.\nCancelling restore...\n");
 					printMenu();
 					listenForCommand();
-				}
-				
+				}	
 			}
 		}
 		else if (cmd.equalsIgnoreCase("menu")) {
@@ -137,7 +131,6 @@ public class TelListDriver implements Serializable {
 		}
 		
 		listenForCommand();
-		
 	}
 	
 	public void  collectAddInfo() {
@@ -149,7 +142,7 @@ public class TelListDriver implements Serializable {
 		System.out.println("Enter phone number for " + data.getName() + ":");
 		data.setPhoneNumber(keyboard.nextLine());
 		boolean result = confirmAdd(data);
-		
+
 		if (result) {
 			// REALLY confirm the TelListItem was added by searching the currentList for the name just added.
 			// Return that result to the user.
@@ -159,8 +152,6 @@ public class TelListDriver implements Serializable {
 		}
 		else
 			listenForCommand();
-			
-		
 	}
 	
 	private boolean confirmAdd(TelListItem data) {
@@ -216,7 +207,6 @@ public class TelListDriver implements Serializable {
 		
 		String confirm = keyboard.next();
 		if (confirm.toLowerCase().startsWith("y")) {
-			
 			System.out.printf("Writing to '%s'...\n", fileName);
 			boolean isWritten = currentList.writeOut(currentList, fileName);
 			if (!isWritten)
@@ -225,10 +215,9 @@ public class TelListDriver implements Serializable {
 		else if (confirm.toLowerCase().startsWith("f")) {
 			keyboard.nextLine();
 			System.out.println("Enter a new file name:\n");
-			
 			String newFile = keyboard.nextLine();
 			if (newFile.length() != 0) {
-			System.out.printf("Writing to '%20s'...\n", newFile);
+			System.out.printf("Writing to '%s'...\n", newFile);
 			boolean isWritten = currentList.writeOut(currentList, newFile);
 			
 			if (!isWritten)
@@ -249,7 +238,6 @@ public class TelListDriver implements Serializable {
 		}
 		
 		return result;
-		
 	}
 	
 	public void printInstructions() {
@@ -268,5 +256,4 @@ public class TelListDriver implements Serializable {
 		System.out.printf("%-3sWrite the database to a file\n", "w");
 		System.out.printf("%-3sRestore a saved database\n", "r");	
 	}
-
 }

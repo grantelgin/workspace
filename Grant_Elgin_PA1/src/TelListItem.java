@@ -116,5 +116,4 @@ public class TelListItem implements Serializable {
 		
 		return isValid;
 	}
-
 }

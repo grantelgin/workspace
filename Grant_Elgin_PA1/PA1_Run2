@@ -1,0 +1,168 @@
+Telephone List Manager v1.0
+Type 'quit' to exit program.
+Type 'menu' to see the menu
+Menu
+a  Add a phone number to the list
+p  Print the entire list
+s  Search for a name
+e  Search for email address
+d  Delete an Entry
+w  Write the database to a file
+r  Restore a saved database
+Enter a command
+
+a
+Enter name: 
+Sam Adams
+Enter email for Sam Adams:
+sam@gmail.com
+Enter phone number for Sam Adams:
+617-234-0987
+Is this correct?
+Name: Sam Adams
+Email: sam@gmail.com
+Number: 617-234-0987
+Enter Y/N
+y
+Adding...
+
+Added to list
+Name: Sam Adams
+Email: sam@gmail.com
+Number: 617-234-0987
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Sam Adams                sam@gmail.com                 617-234-0987        
+
+Enter a command
+
+r
+Enter the name of the file to restore: 
+grantsList
+You've entered items that may not be included in the restored file.
+Enter y to add these items to the restored list. Press n to discard your current items.
+ WARNING! Your current items will be deleted when you enter n.
+
+y
+Adding items to the restored file...
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Sam Adams                sam@gmail.com                 617-234-0987        
+2       Joseph Warren            jo@grantelgin.com             617-555-1212        
+
+Enter a command
+
+a
+Enter name: 
+Katie Allen
+Enter email for Katie Allen:
+katie@katieallendesign.com
+Enter phone number for Katie Allen:
+469-222-8451
+Is this correct?
+Name: Katie Allen
+Email: katie@katieallendesign.com
+Number: 469-222-8451
+Enter Y/N
+y
+Adding...
+
+Added to list
+Name: Katie Allen
+Email: katie@katieallendesign.com
+Number: 469-222-8451
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Katie Allen              katie@katieallendesign.com    469-222-8451        
+2       Sam Adams                sam@gmail.com                 617-234-0987        
+3       Joseph Warren            jo@grantelgin.com             617-555-1212        
+
+Enter a command
+
+d
+Enter name of record to be deleted: 
+Joseph Warren
+Searching...
+Is this the correct record to delete?
+Name: Joseph Warren
+Email: jo@grantelgin.com
+Number: 617-555-1212
+Enter Y/N
+y
+Deleting...
+
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Katie Allen              katie@katieallendesign.com    469-222-8451        
+2       Sam Adams                sam@gmail.com                 617-234-0987        
+
+Enter a command
+
+s
+Enter a name: 
+Katie Allen
+Found...
+Name: Katie Allen
+Email: katie@katieallendesign.com
+Phone number: 469-222-8451
+Enter a command
+
+e
+Enter an email address: 
+sam@gmail.com
+Found...
+Name: Sam Adams
+Email: sam@gmail.com
+Phone number: 617-234-0987
+Enter a command
+
+w
+Write the database to a file...
+The current file name is: grantsList
+Would you like to save to that file?
+Enter y for yes. Enter f to provide a new file name.
+Enter n to cancel
+y
+Writing to 'grantsList'...
+Enter a command
+
+Enter a command
+
+p
+================================================================================
+index   Name                     Email address                 Phone number        
+================================================================================
+
+1       Katie Allen              katie@katieallendesign.com    469-222-8451        
+2       Sam Adams                sam@gmail.com                 617-234-0987        
+
+Enter a command
+
+quit
+Quitting program
