@@ -9,6 +9,12 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ *  TelListManager manages the current list and contains methods to add, delete, search by name or email, 
+ *  save to a file and restore from a file 
+ *  @author grantelgin
+ *  */
+
 
 public class TelListManager implements Serializable {
 	/**
@@ -27,7 +33,7 @@ public class TelListManager implements Serializable {
 	}
 
 	public void headAdd(TelListItem data) {
-
+		// add a TelListItem to the beginning of the list. 
 		TelListItem n = new TelListItem();
 		n.setListItem(data);
 
@@ -47,65 +53,65 @@ public class TelListManager implements Serializable {
 	}
 
 	public boolean deleteTelListItem(TelListItem toDelete) {
+		// remove an item from the current list.
+
 		TelListItem current = head;
 		TelListItem nextItem = new TelListItem();
 		TelListItem nextNext = new TelListItem();
+		// return if there are no items to delete
 		if (size == 0)
 			return false;
 
 		boolean wasDeleted = false;
-		
-		//Are we deleting the only item in the list?
+
+		//Are we deleting the head item? Is it the only item in the list?
 		if (toDelete.getName().equalsIgnoreCase(current.getName())) {
 			if (current.getNext() == null) {
 				head.setName(null);
 				head.setEmail(null);
 				head.setPhoneNumber(null);
 				wasDeleted = true;
-				
+
 			}
 			else {
 				head.setListItem(current.getNext());
 				current = null;
 				wasDeleted = true;
-				
 			}
-			
 		}
 		else {
-		
 
-		while (true) {
-			//If end of list - stop
-			if (current == null) {
-				wasDeleted = false;
-				break;
-			}
-			
-			//Check to see if the next node is what were looking for
-			nextItem.setListItem(current.getNext());
-			if (nextItem != null) {
-				if (toDelete.getName().equalsIgnoreCase(nextItem.getName())) {
-					//found the right one, loop around the node
-					if (nextItem.getNext() != null) {
-					nextNext.setListItem(nextItem.getNext());
-					current.setNext(nextNext);
-					nextNext.setPrev(current);
-					}
-					else {
-						current.setNext(null);
-					}
-					nextItem = null;
-					wasDeleted = true;
+			while (true) {
+				//If end of list - stop
+				if (current == null) {
+					wasDeleted = false;
 					break;
 				}
+
+				//Check to see if the next node is what we're looking for
+				nextItem.setListItem(current.getNext());
+				if (nextItem != null) {
+					if (toDelete.getName().equalsIgnoreCase(nextItem.getName())) {
+						//found the right one, set adjacent nodes
+						if (nextItem.getNext() != null) {
+							nextNext.setListItem(nextItem.getNext());
+							current.setNext(nextNext);
+							nextNext.setPrev(current);
+						}
+						else {
+							current.setNext(null);
+						}
+						nextItem = null;
+						wasDeleted = true;
+						break;
+					}
+				}
+				current = current.getNext();
 			}
-			current = current.getNext();
-		}
 		}
 		if (wasDeleted)
 			size--;
-		
+
 		return wasDeleted;
 
 	}
@@ -113,77 +119,93 @@ public class TelListManager implements Serializable {
 	public int getSize() {
 		return size;
 	}
-	
+
 	public boolean printList() {
 		// print the entire list
 		String rtn = "";
 		TelListItem t = head;
 		boolean result = true;
 		if (t != null) {
-		for (int x = 0; x <= size; x++) {
-			rtn += "Name: " + t.getName() + "\nEmail: " + t.getEmail() + "\nPhone number: " + t.getPhoneNumber() + "\n";
-			t = t.getNext();
-		}
-		
-		System.out.println(rtn);
+			for (int x = 0; x <= size; x++) {
+				rtn += "Name: " + t.getName() + "\nEmail: " + t.getEmail() + "\nPhone number: " + t.getPhoneNumber() + "\n";
+				t = t.getNext();
+			}
+
+			System.out.println(rtn);
 		}
 		else {
 			System.out.println("The current list is empty. Select a list to print or add items to the current list.\n");
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
+
+	public TelListManager mergeCurrentList(TelListManager listToUpdate) {
+		// Start with the head of the current list, add to listToUpdate, loop through currentList, add each item to listToUpdate. 
+		TelListItem t = head;
+
+		if (t != null) {
+			for (int x = 0; x <= size; x++) {
+				listToUpdate.headAdd(t);
+				t = t.getNext();
+			}
+		}
+
+		return listToUpdate;
+	}
+
 	public TelListItem searchByName (String name) {
 		TelListItem result = new TelListItem();
-		
+
 		TelListItem current = head;
 		// for multiple matches store matches in an array, ask user to refine further if necessary.
-		// more work will have to be done on this loop. 
+		// TODO add result to array for multiple matches, return array.  
 		for (int x = 0; x <= size; x++) {
 			if (current.getName().equalsIgnoreCase(name))
 				result = current;
 			else 
 				current = current.getNext();
 		}
-		
+
 		return result;
 	}
-	
+
 	public TelListItem searchByEmail (String email) {
 		TelListItem result = new TelListItem();
-		
+
 		TelListItem current = head;
 		// for multiple matches store matches in an array, ask user to refine further if necessary.
-		// more work will have to be done on this loop. 
+		// TODO add result to array for multiple matches, return array.
 		for (int x = 0; x <= size; x++) {
 			if (current.getEmail().equalsIgnoreCase(email))
 				result = current;
 			else 
 				current = current.getNext();
 		}
-		
+
 		return result;
 	}
-	
+
 
 	public boolean writeOut(TelListManager list, String fileName) {
+		// Write current list to a new file. WARNING! If an existing file is named, that file will be overwritten.
+		// user is prompted to use restore instead of writeOut if they want to update an existing file. 
 		boolean result = true;
-		
+
 		setCurrentFileName(fileName);
-		
+
 		File f = new File(getCurrentFileName());
-		
+
 		FileOutputStream os = null;
-		
+
 		try {
 			os = new FileOutputStream(f);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		ObjectOutputStream oos = null;
 		try {
 			oos = new ObjectOutputStream(os);
@@ -191,13 +213,13 @@ public class TelListManager implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			oos.writeObject(list);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			oos.close();
 		} catch (IOException e) {
@@ -210,24 +232,24 @@ public class TelListManager implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return result;
 
 	}
-	
-	public void readBack() {
-		
-		File f = new File(getCurrentFileName());
-		
+
+	public TelListManager readBack(String fileName) {
+		// replaces the currentList with a stored file. User is prompted to add currentList items if currentList.getSize() > 0.
+		File f = new File(fileName);
+		TelListManager list = new TelListManager();
 		FileInputStream is = null;
 
 		try {
 			is = new FileInputStream(f);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			return list;
 		}
-		
+
 		ObjectInputStream ois = null;
 		try {
 			ois = new ObjectInputStream(is);
@@ -237,7 +259,7 @@ public class TelListManager implements Serializable {
 		}
 
 		try {
-			TelListManager list = (TelListManager) ois.readObject();
+			list = (TelListManager) ois.readObject();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -245,7 +267,7 @@ public class TelListManager implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			ois.close();
 		} catch (IOException e) {
@@ -258,16 +280,19 @@ public class TelListManager implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		return list;
 
 	}
 
 	public String getCurrentFileName() {
+		// if a currentFile has not been specified, currentTime is suggested to the user. 
+		// User is prompted to change name or use currentTime. 
+		
 		if (currentFileName == "") {
 			String currentTime = new SimpleDateFormat("yyyyMMddkkmmss").format(new Date());
 			setCurrentFileName(currentTime);
 		}
-		
+
 		return currentFileName;
 	}
 

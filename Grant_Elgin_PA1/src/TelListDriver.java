@@ -1,6 +1,12 @@
 import java.io.Serializable;
 import java.util.Scanner;
 
+/**
+ * TelListDriver contains all the methods that interface with the user's input to create a TelListManager linkedList,
+ * which contains nodes of TelListItems. 
+ * @author grantelgin
+ *
+ */
 
 public class TelListDriver implements Serializable {
 	private TelListManager currentList = new TelListManager();
@@ -15,20 +21,22 @@ public class TelListDriver implements Serializable {
 	public void doIt () {
 		printInstructions();
 		listenForCommand();
-		//currentList.writeOut(currentList, "");
+
 	}
 	
 	public void listenForCommand() {
-		System.out.println("Enter a command");
+		// listens for user to enter a command listed on the menu, 'menu' or 'quit'
+		// See printMenu() for definitions of commands.
+		System.out.println("Enter a command\n");
 		keyboard.reset();
 		String cmd = keyboard.nextLine();
 		if (!cmd.isEmpty()) {
 		if (cmd.toLowerCase().startsWith("a")) {
-			// add listen for arguments
+			//TODO add listen for arguments
 			collectAddInfo();
 		}
 		else if (cmd.toLowerCase().startsWith("p")) {
-			// add listen for arguments
+			//TODO add listen for arguments
 			boolean result = currentList.printList();
 			if (result)
 				listenForCommand();
@@ -37,22 +45,22 @@ public class TelListDriver implements Serializable {
 			
 		}
 		else if (cmd.toLowerCase().startsWith("s")) {
-			// add listen for arguments
+			//TODO add listen for arguments
 			System.out.println("Enter a name: ");
 			String name = keyboard.nextLine();
 			TelListItem found = currentList.searchByName(name);
-			System.out.println("Found: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
+			System.out.println("Found...\nName: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
 			
 		}
 		else if (cmd.toLowerCase().startsWith("e")) {
-			// add listen for arguments
+			//TODO add listen for arguments
 			System.out.println("Enter an email address: ");
 			String email = keyboard.nextLine();
 			TelListItem found = currentList.searchByEmail(email);
-			System.out.println("Found: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
+			System.out.println("Found...\nName: " + found.getName() + "\nEmail: " + found.getEmail() +  "\nPhone number: " + found.getPhoneNumber());
 		}
 		else if (cmd.toLowerCase().startsWith("d")) {
-			// add listen for arguments
+			//TODO add listen for arguments
 			System.out.println("Enter name of record to be deleted: ");
 			String nameToDelete = keyboard.nextLine();
 			System.out.println("Searching...");
@@ -68,7 +76,7 @@ public class TelListDriver implements Serializable {
 
 		}
 		else if (cmd.toLowerCase().startsWith("w")) {
-			// add listen for arguments
+			//TODO add listen for arguments
 			String fileName = currentList.getCurrentFileName();
 			boolean result = confirmWrite(fileName);
 			if (result)
@@ -79,14 +87,48 @@ public class TelListDriver implements Serializable {
 			}
 		}
 		else if (cmd.toLowerCase().startsWith("r")) {
-			// add listen for arguments
-
+			//TODO add listen for arguments
+			System.out.println("Enter the name of the file to restore: ");
+			String fileName = keyboard.nextLine();
+			TelListManager restoredList = new TelListManager();
+			restoredList = restoredList.readBack(fileName);
+			if (restoredList.getSize() == 0) {
+				// if the file doesn't exist, restoredList is returned with size 0. The catch prints a message, then we cancel
+				// and listen for a command. 
+				System.out.println("Cancelling restore...\n");
+				listenForCommand();
+			}
+			if (currentList.getSize() == 0){
+				// if no TelListItems have been entered, the currentList size will be 0. Just restore the req. file. 
+				currentList = restoredList;
+			}
+			else {
+				// if currentList size is > 0, items have been entered. Ask user to discard or save to the restored file.
+				System.out.println("You've entered items that may not be included in the restored file.\nEnter y to add these items to the restored list. Press n to discard your current items.\n WARNING! Your current items will be deleted when you enter n.\n");
+				String addToList = keyboard.nextLine();
+				if (addToList.toLowerCase().startsWith("y")) {
+					System.out.println("Adding items to the restored file...");
+					TelListManager combinedList = currentList.mergeCurrentList(restoredList);
+					currentList = combinedList;
+				}
+				else if (addToList.toLowerCase().startsWith("n")) {
+					currentList = restoredList;
+				}
+				else {
+					System.out.println("Woops! You must confirm what should happen with the current list.\nCancelling restore...\n");
+					printMenu();
+					listenForCommand();
+				}
+				
+			}
 		}
 		else if (cmd.equalsIgnoreCase("menu")) {
 			printMenu();
 			listenForCommand();
 		}
 		else if (cmd.equalsIgnoreCase("quit")) {
+			// TODO if currentList.getSize() is > (the TelListManager size of the restored file)
+			// prompt to see if user wants to save entries. 
 			System.out.println("Quitting program");
 			System.exit(0);
 		}
@@ -109,6 +151,8 @@ public class TelListDriver implements Serializable {
 		boolean result = confirmAdd(data);
 		
 		if (result) {
+			// REALLY confirm the TelListItem was added by searching the currentList for the name just added.
+			// Return that result to the user.
 			TelListItem added = currentList.searchByName(data.getName());
 			System.out.println("Added to list\nName: " + added.getName() + "\nEmail: " + added.getEmail() + "\nNumber: " + added.getPhoneNumber());
 			listenForCommand();
@@ -120,15 +164,14 @@ public class TelListDriver implements Serializable {
 	}
 	
 	private boolean confirmAdd(TelListItem data) {
+		// prompt user to confirm their input is what they want added to the list. 
 		System.out.println("Is this correct?");
 		System.out.println("Name: " + data.getName() + "\nEmail: " + data.getEmail() + "\nNumber: " + data.getPhoneNumber() + "\nEnter Y/N");
 		boolean result = true;
 		String confirm = keyboard.next();
 		if (confirm.toLowerCase().startsWith("y")) {
-			//TelListItem data = new TelListItem()
 			System.out.println("Adding...\n");
 			currentList.headAdd(data);
-			
 		}
 		else if (confirm.toLowerCase().startsWith("n")) {
 			System.out.println("cancelled...\n");
@@ -148,7 +191,6 @@ public class TelListDriver implements Serializable {
 		boolean result = true;
 		String confirm = keyboard.next();
 		if (confirm.toLowerCase().startsWith("y")) {
-			//TelListItem data = new TelListItem()
 			System.out.println("Deleting...\n");
 			boolean isDeleted = currentList.deleteTelListItem(data);
 			if (!isDeleted)
@@ -167,6 +209,8 @@ public class TelListDriver implements Serializable {
 	}
 	
 	private boolean confirmWrite(String fileName) {
+		// Save the currentList to a file.
+		// if a currentFileName has not been loaded, TelListManager suggests the currentTime as the file name. 
 		boolean result = true;
 		System.out.printf("Write the database to a file...\nThe current file name is: %s\nWould you like to save to that file?\nEnter y for yes. Enter f to provide a new file name.\nEnter n to cancel\n", fileName);
 		

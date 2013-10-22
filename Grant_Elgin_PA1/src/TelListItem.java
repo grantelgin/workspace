@@ -2,6 +2,11 @@ import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * TelListItem is a doubly linkedList that defines the data stored in each node of a TelListManager instance.  
+ * @author grantelgin
+ *
+ */
 
 public class TelListItem implements Serializable {
 	private String name;
@@ -51,6 +56,8 @@ public class TelListItem implements Serializable {
 	}
 	public boolean setPhoneNumber(String phoneNumber) {
 		boolean isValid = true;
+		// phone number validation is turned off by default. The user confirms the record to be saved and can 
+		// change the number format at their own discretion
 		
 		//if (validatePhoneNumber(phoneNumber))
 			this.phoneNumber = phoneNumber;
@@ -80,9 +87,7 @@ public class TelListItem implements Serializable {
 		boolean isValid = true;
 		
 		try {
-			//InternetAddress emailAddr = new InternetAddress(email);
-			//emailAddr.validate();
-			//Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
+
 			Pattern p = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 		    Matcher m = p.matcher(email);
 		    if (m.matches())
@@ -108,8 +113,6 @@ public class TelListItem implements Serializable {
 	      
 	      else
 	    	  isValid = false;
-	      
-		
 		
 		return isValid;
 	}

@@ -1,5 +1,65 @@
 Pseudocode
 
+What the user sees: description;
+--> What the user does;
+[[	What happens when user performs action; 
+
+Run Program: User sees instructions and menu;
+(High Level) Receive input from user, effect linkedList according to input, prompt for another command;
+			 Menu includes:
+    			a  Add a phone number to the list
+    			p  Print the entire list
+    			s  Search for Name
+    			e  Search for email address
+    			d  Delete an Entry
+    			w  Write the database to a file
+    			r  Restore a saved database
+    		 menu  shows this menu
+    		 quit  quits program;
+
+--> user enters "a";
+[[ prompt user for name, email and phone number;
+[[ validate entry and add to list;
+[[ prompt user for input;
+
+--> user enters "p";
+[[ print list of entries in phone list, prompt user for input;
+
+--> user enters "s";
+[[ prompt user for name, search to match name, 
+[[ return result, prompt user for input;
+
+--> user enter "e";
+[[ prompt user for email, search to match;
+[[ return result, prompt user for input;
+
+--> user enters "d";
+[[ prompt user for name to delete;
+[[ confirm result, delete item, prompt for input;
+
+--> user enters "w";
+[[ confirm name of file to write to, write to file;
+
+--> user enters "r";
+[[ prompt user for file name to restore, handle if file exists, if current items exist,
+[[ restore file, prompt for input;
+
+--> user enters "menu";
+[[ print menu, prompt for input;
+
+--> user enters "quit";
+[[ check for unsaved entries, handle those, exit program;
+
+
+
+
+    		 
+    
+    		 
+
+
+
+
 
 1: print out app instructions & the UI menu.
 2: Prompt the user to load an existing database or create a new one.
