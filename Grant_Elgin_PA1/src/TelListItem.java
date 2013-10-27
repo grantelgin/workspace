@@ -3,7 +3,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * TelListItem is a doubly linkedList that defines the data stored in each node of a TelListManager instance.  
+ * TelListItem is a node of a doubly linkedList that defines the data stored in each node of a TelListManager instance.  
  * @author grantelgin
  *
  */
