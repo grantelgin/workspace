@@ -59,13 +59,119 @@ public class StackDriver {
 			}
 		}
 		if (valid) {
-			StackNode move = new StackNode();
-			move.setLocation(col, row);
-			currentStack.push(move);
-			System.out.println("col: " + currentStack.getTop().getColumn() + "\nrow: " + currentStack.getTop().getRow());
-			listenForInput();
+			//check diagonal
+			boolean success = topLeft(col, row);
+			success = topRight(col, row);
+			success = bottomLeft(col, row);
+			success = bottomRight(col, row);
+			
+			if (success) {
+				System.out.println("success: ");
+				StackNode move = new StackNode();
+				move.setLocation(col, row);
+				currentStack.push(move);
+				System.out.println("col: " + currentStack.getTop().getColumn() + "\nrow: " + currentStack.getTop().getRow());
+				listenForInput();
+			}
+			else {
+				listenForInput();
+			}
 		}
 		
+	}
+	
+	public boolean checkDiagonal(int col, int row) {
+		boolean success = true;
+		StackNode node = new StackNode();
+		for (int x = 0; x < currentStack.getCount(); x++) {
+			
+			if (col == node.getColumn() || row == node.getRow()) {
+				System.out.println("Nope. Already a queen there");
+				success = false;
+			}
+		}
+		
+		return success;
+	}
+	
+	public boolean topLeft(int col, int row) {
+		boolean success = true;
+		StackNode currentNode = currentStack.getTop();
+		while (col > 0 && row > 0) {
+			for (int x = 0; x < currentStack.getCount(); x++) {
+				if (col == currentNode.getColumn() && row == currentNode.getRow()) {
+					System.out.println("Nope. Queen on top left diagonal");
+					return false;
+				}
+			}
+			
+			if (success) {
+				col = col - 1;
+				row = row - 1;
+			}
+		}
+		
+		return success;
+	}
+	
+	public boolean topRight(int col, int row) {
+		boolean success = true;
+		StackNode currentNode = currentStack.getTop();
+		while (col > 0 && row < 9) {
+			for (int x = 0; x < currentStack.getCount(); x++) {
+				if (col == currentNode.getColumn() && row == currentNode.getRow()) {
+					System.out.println("Nope. Queen on top right diagonal");
+					return false;
+				}
+			}
+			
+			if (success) {
+				col = col + 1;
+				row = row - 1;
+			}
+		}
+		
+		return success;
+	}
+	
+	public boolean bottomLeft(int col, int row) {
+		boolean success = true;
+		StackNode currentNode = currentStack.getTop();
+		while (col < 9 && row > 0) {
+			for (int x = 0; x < currentStack.getCount(); x++) {
+				if (col == currentNode.getColumn() && row == currentNode.getRow()) {
+					System.out.println("Nope. Queen on bottom left diagonal");
+					return false;
+				}
+			}
+			
+			if (success) {
+				col = col - 1;
+				row = row + 1;
+			}
+		}
+		
+		return success;
+	}
+	
+	public boolean bottomRight(int col, int row) {
+		boolean success = true;
+		StackNode currentNode = currentStack.getTop();
+		while (col < 9 && row < 9) {
+			for (int x = 0; x < currentStack.getCount(); x++) {
+				if (col == currentNode.getColumn() && row == currentNode.getRow()) {
+					System.out.println("Nope. Queen on bottom right diagonal");
+					return false;
+				}
+			}
+			
+			if (success) {
+				col = col + 1;
+				row = row + 1;
+			}
+		}
+		
+		return success;
 	}
 	
 	public void showBoard() {
