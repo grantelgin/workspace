@@ -60,18 +60,19 @@ public class StackDriver {
 		}
 		if (valid) {
 			//check diagonal
-			boolean success = topLeft(col, row);
-			success = topRight(col, row);
-			success = bottomLeft(col, row);
-			success = bottomRight(col, row);
+			boolean success = (topLeft(col, row) && topRight(col, row) && bottomLeft(col, row) && bottomRight(col, row));
 			
 			if (success) {
 				System.out.println("success: ");
 				StackNode move = new StackNode();
 				move.setLocation(col, row);
 				currentStack.push(move);
-				System.out.println("col: " + currentStack.getTop().getColumn() + "\nrow: " + currentStack.getTop().getRow());
-				listenForInput();
+				System.out.println("added col: " + currentStack.getTop().getColumn() + ", row: " + currentStack.getTop().getRow());
+				if (currentStack.getCount() == 8) {
+					showBoard();
+				}
+				else
+					listenForInput();
 			}
 			else {
 				listenForInput();
@@ -80,19 +81,6 @@ public class StackDriver {
 		
 	}
 	
-	public boolean checkDiagonal(int col, int row) {
-		boolean success = true;
-		StackNode node = new StackNode();
-		for (int x = 0; x < currentStack.getCount(); x++) {
-			
-			if (col == node.getColumn() || row == node.getRow()) {
-				System.out.println("Nope. Already a queen there");
-				success = false;
-			}
-		}
-		
-		return success;
-	}
 	
 	public boolean topLeft(int col, int row) {
 		boolean success = true;
@@ -117,7 +105,7 @@ public class StackDriver {
 	public boolean topRight(int col, int row) {
 		boolean success = true;
 		StackNode currentNode = currentStack.getTop();
-		while (col > 0 && row < 9) {
+		while (col > 0 && col < 9 && row > 0 && row < 9) {
 			for (int x = 0; x < currentStack.getCount(); x++) {
 				if (col == currentNode.getColumn() && row == currentNode.getRow()) {
 					System.out.println("Nope. Queen on top right diagonal");
@@ -137,7 +125,7 @@ public class StackDriver {
 	public boolean bottomLeft(int col, int row) {
 		boolean success = true;
 		StackNode currentNode = currentStack.getTop();
-		while (col < 9 && row > 0) {
+		while (col < 9 && col > 0 && row > 0 && row < 9) {
 			for (int x = 0; x < currentStack.getCount(); x++) {
 				if (col == currentNode.getColumn() && row == currentNode.getRow()) {
 					System.out.println("Nope. Queen on bottom left diagonal");
@@ -157,7 +145,7 @@ public class StackDriver {
 	public boolean bottomRight(int col, int row) {
 		boolean success = true;
 		StackNode currentNode = currentStack.getTop();
-		while (col < 9 && row < 9) {
+		while (col < 9 && col > 0 && row < 9 && row > 0) {
 			for (int x = 0; x < currentStack.getCount(); x++) {
 				if (col == currentNode.getColumn() && row == currentNode.getRow()) {
 					System.out.println("Nope. Queen on bottom right diagonal");
@@ -175,27 +163,35 @@ public class StackDriver {
 	}
 	
 	public void showBoard() {
+		System.out.println("Drawing board...");
 		String row = "+---+---+---+---+---+---+---+---+";
 		String queen = " Q |";
 		String emptySquare = "   |";
+		String board = row;
+		String newLine = "|";
+		StackNode currentNode = currentStack.getTop();
+		boolean[][] bo = new boolean[8][8];
 		
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
-		System.out.println("|" + queen + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare + emptySquare);
-		System.out.println(row);
+		for (int x = 0; x < currentStack.getCount(); x++) {
+			bo[currentNode.getRow() - 1][currentNode.getColumn() - 1] = true;
+			currentNode = currentNode.getNext();
+		}
+		
+		for (int r = 0; r < 8; r++) {
+			for (int c = 0; c < 8; c++) {
+				if (bo[r][c] == true)
+					newLine += queen;		
+				else
+					newLine += emptySquare;
+			}
+			
+			board = board + "\n" + newLine + "\n" + row;
+			newLine = "|";
+		}
+		
+		System.out.println(board);
 	}
+	
+	
 
 }
