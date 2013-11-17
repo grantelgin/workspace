@@ -17,8 +17,15 @@ public class StackDriver {
 	}
 
 	public void doIt() {
+		showInstructions();
 		showBoard();
 		listenForInput();
+	}
+	
+	public void showInstructions() {
+		System.out.println("8 queens v 1.0\n");
+		System.out.println("Select a column and a row for each position.\nThe goal is locate 8 queens on the board where they can not kill each other.");
+		System.out.println("Enter 999 to exit. ");
 	}
 
 	public void listenForInput() {
@@ -27,9 +34,17 @@ public class StackDriver {
 		System.out.println("Choose a column: ");
 		try {
 			int col = keyboard.nextInt();
+			if (col == 999){
+				System.out.println("Exiting game...");
+				System.exit(0);
+			}
 			if (col > 0 && col < 9) {
 				System.out.println("Choose a row: ");
 				int row = keyboard.nextInt();
+				if (row == 999) {
+					System.out.println("Exiting game...");
+					System.exit(0);
+				}
 				if (row > 0 && row < 9) {
 					System.out.println("column: " + col + "\nrow: " + row);
 					checkLocation(col, row);
@@ -75,16 +90,17 @@ public class StackDriver {
 
 			if (success) {
 				// Add to currentStack
-				System.out.println("success: ");
+				System.out.println("success ");
 				StackNode move = new StackNode();
 				move.setLocation(col, row);
 				currentStack.push(move);
-				System.out.println("added col: "
-						+ currentStack.getTop().getColumn() + ", row: "
-						+ currentStack.getTop().getRow());
+				
 				if (currentStack.getCount() == 8) {
+					System.out.println("You win!\n");
 					showBoard();
+					System.exit(0);
 				} else
+					showBoard();
 					listenForInput();
 			} else {
 				listenForInput();
@@ -190,8 +206,8 @@ public class StackDriver {
 		String newLine = "|";
 		StackNode currentNode = currentStack.getTop();
 		boolean[][] bo = new boolean[8][8];
-		// build an array of true false values based on currentStack. true draws
-		// a queen, false draws an emptySquare
+		// build an array of true false values based on currentStack. 
+		// true draws a queen, false draws an emptySquare
 		for (int x = 0; x < currentStack.getCount(); x++) {
 			bo[currentNode.getRow() - 1][currentNode.getColumn() - 1] = true;
 			currentNode = currentNode.getNext();
