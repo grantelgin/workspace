@@ -1,0 +1,32 @@
+11/19/13
+Grant Elgin
+CS 342 PA 2
+8 Queens Problem PseudoCode
+
+
+1. Display Program name, instructions and how to exit game. 
+2. Display the empty board, prompt user to choose a column and a row.
+3. Validate the (x, y) by checking column, row, and 4 diagonals against existing stack nodes. 
+	If a node exists, do not push (x, y) on to stack. Display message that a queen is already there. 
+	Else push node on stack and re-draw board, showing queen on board. 
+4. Prompt user for next column, row. Repeat step 3. Continue until 8 successful guesses. 
+5. After 8 successful guesses, show completed board. 
+6. Always listen for an exit command on every input from user. 
+
+Draw board by looping across 8 rows. 
+For each row, print a string of '+---+'for 8 columns, then check stack for a queen on that row.
+If there's a queen, add a ' Q |'
+If there's no queen, add a '   |'
+
+Check columns by looping over count of stackNode, check the inputted column against each column in the stack. 
+Check rows the same way. 
+Check each diagonal separately by passing in the input (x, y), loop over each (col, row) on board in each direction, 
+then loop through each node in stack to see if the current (col, row) matches. if it matches, do not push node on stack. 
+Starting with input (col, row), 
+topLeft checks col-1, row-1
+topRight checks col+1, row-1
+bottomLeft checks col-1, row+1
+bottomRight checks col+1, row+1
+
+  
+  
