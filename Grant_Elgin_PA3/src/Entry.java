@@ -14,7 +14,7 @@ public class Entry {
 		first = new FilmPlaceTime();
 	}
 
-	public void insert (FilmPlaceTime data, int hashKey) {
+	public boolean insert (FilmPlaceTime data, int hashKey) {
 		FilmPlaceTime prev = new FilmPlaceTime();
 		FilmPlaceTime current = first;
 
@@ -30,7 +30,11 @@ public class Entry {
 			prev.setNext(data);
 
 		data.setNext(current);
+		
+		
+		return true;
 	}
+	
 	
 	public FilmPlaceTime search(int hashKey, String title) {
 		FilmPlaceTime current = first;

@@ -24,13 +24,17 @@ public class OpenHashTable {
 	private int linearProbe(int bucket) {
 		return (bucket + 1) % TABLE_SIZE;
 	}
+	
+	private int quadraticProbe(int bucket, int i) {
+		return (bucket + i * i) % TABLE_SIZE;
+	}
 
 	public boolean add(FilmPlaceTime data) {
 
 		int bucket = hashFunction(data.getTitle());
-
-		if ((table[bucket].getState() == Entry.NEVER_USED) || 
-				(table[bucket].getState() == Entry.PREVIOUSLY_USED)) {
+		//int bucket = search(data);
+		
+		if ((table[bucket].getState() == Entry.NEVER_USED) || (table[bucket].getState() == Entry.PREVIOUSLY_USED)) {
 			table[bucket].setData(data);
 			table[bucket].setState(Entry.IN_USE);
 			return true;
@@ -38,9 +42,10 @@ public class OpenHashTable {
 			// Collision
 			System.out.println("Collision! " + data.getTitle() + " collision with: " + table[bucket].getData().getTitle());
 			for (int i = 0; i < TABLE_SIZE; i++) {
-				bucket = linearProbe(bucket);
-				if ((table[bucket].getState() == Entry.NEVER_USED) || 
-						(table[bucket].getState() == Entry.PREVIOUSLY_USED)) {
+				//bucket = linearProbe(bucket);
+				bucket = quadraticProbe(bucket, i);
+				System.out.println("i = " + i + ", bucket = " + bucket);
+				if ((table[bucket].getState() == Entry.NEVER_USED) || (table[bucket].getState() == Entry.PREVIOUSLY_USED)) {
 					table[bucket].setData(data);
 					table[bucket].setState(Entry.IN_USE);
 					return true;
@@ -83,9 +88,11 @@ public class OpenHashTable {
 
 		if (table[bucket].getState() == Entry.NEVER_USED) {
 			return Entry.NEVER_USED;
+			//System.out.println("Bucket " + bucket + " has not yet been used. Adding to bucket " + bucket);
 		}
 
 		if (table[bucket].getData().getTitle().equals(data.getTitle())) {
+			System.out.println(table[bucket].getData().getTitle() + " found in bucket " + bucket);
 			return bucket;
 		} else {
 			// search for it
@@ -93,6 +100,7 @@ public class OpenHashTable {
 				bucket = linearProbe(bucket);
 
 				if (table[bucket].getData().getTitle().equals(data.getTitle())) {
+					System.out.println(table[bucket].getData().getTitle() + " found in bucket " + bucket);
 					return bucket;
 				} 
 
@@ -104,7 +112,7 @@ public class OpenHashTable {
 				if (table[bucket].getState() == Entry.NEVER_USED) {
 					return Entry.NEVER_USED;
 				}
-
+				System.out.println("Searched bucket " + bucket);
 			}
 
 			// Table is full

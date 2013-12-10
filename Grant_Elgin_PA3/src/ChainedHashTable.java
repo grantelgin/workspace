@@ -1,8 +1,7 @@
 
 public class ChainedHashTable {
 	private static final int TABLE_SIZE = 31;
-	private FilmPlaceTime firstFPT = null;
-
+	
 	private Entry table[];
 
 	public ChainedHashTable () {
@@ -22,13 +21,33 @@ public class ChainedHashTable {
 
 		return hashKey;
 	}
+	public String showBucket (Entry entry) {
+		String result = "";
+		FilmPlaceTime current = entry.first;
+		while (current.getTitle() != "") {
+		result += current.getTitle();
+		if (current.getNext().getTitle() != "") {
+			result += " --> ";
+		}
+		current = current.getNext();
+		
+		}
+		return result;
+	}
 
 	public boolean add(FilmPlaceTime data) {
 		boolean result = false;
 		int bucket = hashFunction(data.getTitle());
+		if ((table[bucket].getState() == Entry.NEVER_USED) || (table[bucket].getState() == Entry.PREVIOUSLY_USED)) {
+			table[bucket].setState(Entry.IN_USE);
+		}
+		else {
+			// collision
+			System.out.println("Collision! " + data.getTitle() + " collision with: " + showBucket(table[bucket]) + "\nPrepending to head of Entry list...");
+		}
 		data.setKey(bucket);
-		table[bucket].insert(data, bucket);
-
+		result = table[bucket].insert(data, bucket);	
+		
 		return result;
 	}
 
@@ -46,6 +65,54 @@ public class ChainedHashTable {
 		result = add(newFilm);
 
 		return result;
+	}
+	public boolean delete(FilmPlaceTime data) {
+		int bucket = search(data);
+
+		if (bucket < 0) {
+			return false;
+		}
+
+		table[bucket].setState(Entry.PREVIOUSLY_USED);
+		return true;
+	}
+	
+	public int search(FilmPlaceTime data) {
+		int bucket = hashFunction(data.getTitle());
+
+		if (table[bucket].getState() == Entry.NEVER_USED) {
+			return Entry.NEVER_USED;
+			//System.out.println("Bucket " + bucket + " has not yet been used. Adding to bucket " + bucket);
+		}
+
+		if (table[bucket].getData().getTitle().equals(data.getTitle())) {
+			System.out.println(table[bucket].getData().getTitle() + " found in bucket " + bucket);
+			return bucket;
+		} else {
+			// search for it
+			for (int i = 0; i < TABLE_SIZE; i++) {
+				// = table[bucket].search(bucket, title);
+
+				if (table[bucket].getData().getTitle().equals(data.getTitle())) {
+					System.out.println(table[bucket].getData().getTitle() + " found in bucket " + bucket);
+					return bucket;
+				} 
+
+				// keep looking
+				if (table[bucket].getState() == Entry.PREVIOUSLY_USED)
+					continue;
+
+				// Fail
+				if (table[bucket].getState() == Entry.NEVER_USED) {
+					return Entry.NEVER_USED;
+				}
+				System.out.println("Searched bucket " + bucket);
+			}
+
+			// Table is full
+			return Entry.NEVER_USED;
+		}
+
 	}
 
 	public FilmPlaceTime searchByTitle (String title) {
@@ -69,7 +136,18 @@ public class ChainedHashTable {
 			} else if (table[i].getState() == Entry.PREVIOUSLY_USED) {
 				rtn += "PREVIOUSLY_USED\n";
 			} else {
-				rtn += table[i].getData().getTitle() + "\n";
+				FilmPlaceTime fpt = table[i].first;
+				while (fpt != null) {
+					rtn += fpt.getTitle();
+					if (fpt.getNext().getTitle() != "") {
+						fpt = fpt.getNext();
+						rtn += " --> ";
+					}
+					else {
+						fpt = null;
+						rtn += "\n";
+					}
+				}
 			}
 		}
 

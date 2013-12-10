@@ -26,32 +26,41 @@ public class HashDriver {
 		table.quickAdd("Colour on the Thames (1935)", "London England", "1935");
 		table.quickAdd("LN 501 473 Seeing Boston 1906 footagefarm.com", "Boston", "1906");
 		table.quickAdd("Full Trolley Ride Through Boston 1903", "Boston", "1903");
-		FilmPlaceTime fpt = table.searchByTitle("1933 NY Giants at Braves Field Boston Braves");
-		System.out.println("fpt: " + fpt.getTitle());
+		
 		//table.delete(table.searchByTitle("1933 NY Giants at Braves Field Boston Braves"));
-		System.out.println(table);
+		//System.out.println(table);
 		table.quickAdd("1939 Color Movie Boston Skyline, Charles River", "Boston MA", "1939");
 		table.quickAdd("New York, 1940s", "Manhattan NY", "1940's");
 		table.quickAdd("Boston Common and Proper, 1930s", "Boston Common", "1930's");
 		table.quickAdd("1939 'Drive' thru Cambridge,Ma", "Cambridge MA", "1939");
 		
+		System.out.println(table);
+		
+		FilmPlaceTime fpt = table.searchByTitle("1933 NY Giants at Braves Field Boston Braves");
+		System.out.println("fpt: " + fpt.getTitle());
+		
+		//table.delete(table.searchByTitle("LN 501 473 Seeing Boston 1906 footagefarm.com"));
+		//table.delete(table.searchByTitle("Let's go to town"));
+		//table.delete(table.searchByTitle("1929 Mt. Washington Steamer Lake Winnipesaukee"));
+		//table.delete(table.searchByTitle("Rose Bowl Alabama 29 to Stanford 13 1935"));
+		//table.delete(table.searchByTitle("Boston The Way It Was"));
 		
 		System.out.println(table);
+		
+		table.quickAdd("Video 12_1990: Boston Central Artery before the Big Dig", "Boston", "1990");
+		table.quickAdd("Drive through Boston in 1964", "Boston", "1964");
+		table.quickAdd("Boston Mass - 1975", "Boston", "1975");
+		table.quickAdd("Bill Burr Gives Us A Tour of Boston - Part 1 - September 2011", "Boston", "2011");
+		table.quickAdd("Boston Central Artery '88 - v2 - (1 of 5)", "Boston", "1988");
+		
+		System.out.println(table);
+		
 		//System.out.println(table.search(newFilm));
 		//table.delete(newFilm);
-		System.out.println(table);
+		//System.out.println(table);
 
 		
-		// Table size is 31
-//				table.add(newFilm);
-//				table.add("233");
-//				table.add("2333");
-				
-				
-				
-				//System.out.println(table.search());
-				//table.delete("233");
-				//System.out.println(table.delete("2"));
+		
 				
 	}
 
