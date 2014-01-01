@@ -1,0 +1,413 @@
+Collision! 1933 NY Giants at Braves Field Boston Braves collision with: Boston The Way It Was
+i = 0, bucket = 10
+i = 1, bucket = 11
+Collision! Boston Horseless Fire Department collision with: 1933 NY Giants at Braves Field Boston Braves
+i = 0, bucket = 11
+i = 1, bucket = 12
+i = 2, bucket = 16
+Collision! Full Trolley Ride Through Boston 1903 collision with: Let's go to town
+i = 0, bucket = 14
+i = 1, bucket = 15
+Collision! 1939 Color Movie Boston Skyline, Charles River collision with: 1941 Sugar Bowl - Tennessee vs. Boston College
+i = 0, bucket = 2
+i = 1, bucket = 3
+Collision! Boston Common and Proper, 1930s collision with: 1933 NY Giants at Braves Field Boston Braves
+i = 0, bucket = 11
+i = 1, bucket = 12
+i = 2, bucket = 16
+i = 3, bucket = 25
+table[0] = NEVER_USED
+table[1] = New York, 1940s
+table[2] = 1941 Sugar Bowl - Tennessee vs. Boston College
+table[3] = 1939 Color Movie Boston Skyline, Charles River
+table[4] = NEVER_USED
+table[5] = 1932 Original Celtics
+table[6] = NEVER_USED
+table[7] = 1931 Airplanes Over Boston
+table[8] = 1939 'Drive' thru Cambridge,Ma
+table[9] = NEVER_USED
+table[10] = Boston The Way It Was
+table[11] = 1933 NY Giants at Braves Field Boston Braves
+table[12] = 1940 Boston Maine Airways Instrument School
+table[13] = NEVER_USED
+table[14] = Let's go to town
+table[15] = Full Trolley Ride Through Boston 1903
+table[16] = Boston Horseless Fire Department
+table[17] = 1929 Mt. Washington Steamer Lake Winnipesaukee
+table[18] = NEVER_USED
+table[19] = NEVER_USED
+table[20] = NEVER_USED
+table[21] = NEVER_USED
+table[22] = NEVER_USED
+table[23] = Rose Bowl Alabama 29 to Stanford 13 1935
+table[24] = NEVER_USED
+table[25] = Boston Common and Proper, 1930s
+table[26] = LN 501 473 Seeing Boston 1906 footagefarm.com
+table[27] = NEVER_USED
+table[28] = NEVER_USED
+table[29] = Colour on the Thames (1935)
+table[30] = NEVER_USED
+
+fpt: 1933 NY Giants at Braves Field Boston Braves
+LN 501 473 Seeing Boston 1906 footagefarm.com found in bucket 26
+Let's go to town found in bucket 14
+1929 Mt. Washington Steamer Lake Winnipesaukee found in bucket 17
+Rose Bowl Alabama 29 to Stanford 13 1935 found in bucket 23
+Boston The Way It Was found in bucket 10
+table[0] = NEVER_USED
+table[1] = New York, 1940s
+table[2] = 1941 Sugar Bowl - Tennessee vs. Boston College
+table[3] = 1939 Color Movie Boston Skyline, Charles River
+table[4] = NEVER_USED
+table[5] = 1932 Original Celtics
+table[6] = NEVER_USED
+table[7] = 1931 Airplanes Over Boston
+table[8] = 1939 'Drive' thru Cambridge,Ma
+table[9] = NEVER_USED
+table[10] = Boston The Way It Was
+table[11] = 1933 NY Giants at Braves Field Boston Braves
+table[12] = 1940 Boston Maine Airways Instrument School
+table[13] = NEVER_USED
+table[14] = Let's go to town
+table[15] = Full Trolley Ride Through Boston 1903
+table[16] = Boston Horseless Fire Department
+table[17] = 1929 Mt. Washington Steamer Lake Winnipesaukee
+table[18] = NEVER_USED
+table[19] = NEVER_USED
+table[20] = NEVER_USED
+table[21] = NEVER_USED
+table[22] = NEVER_USED
+table[23] = Rose Bowl Alabama 29 to Stanford 13 1935
+table[24] = NEVER_USED
+table[25] = Boston Common and Proper, 1930s
+table[26] = LN 501 473 Seeing Boston 1906 footagefarm.com
+table[27] = NEVER_USED
+table[28] = NEVER_USED
+table[29] = Colour on the Thames (1935)
+table[30] = NEVER_USED
+
+Title: Let's go to town
+Place: Boston
+Time: 1950's
+
+Collision! Video 12_1990: Boston Central Artery before the Big Dig collision with: 1940 Boston Maine Airways Instrument School
+i = 0, bucket = 12
+i = 1, bucket = 13
+Collision! Drive through Boston in 1964 collision with: Boston The Way It Was
+i = 0, bucket = 10
+i = 1, bucket = 11
+i = 2, bucket = 15
+i = 3, bucket = 24
+Collision! Boston Mass - 1975 collision with: Drive through Boston in 1964
+i = 0, bucket = 24
+i = 1, bucket = 25
+i = 2, bucket = 29
+i = 3, bucket = 7
+i = 4, bucket = 23
+i = 5, bucket = 17
+i = 6, bucket = 22
+Collision! Bill Burr Gives Us A Tour of Boston - Part 1 - September 2011 collision with: 1932 Original Celtics
+i = 0, bucket = 5
+i = 1, bucket = 6
+table[0] = NEVER_USED
+table[1] = New York, 1940s
+table[2] = 1941 Sugar Bowl - Tennessee vs. Boston College
+table[3] = 1939 Color Movie Boston Skyline, Charles River
+table[4] = NEVER_USED
+table[5] = 1932 Original Celtics
+table[6] = Bill Burr Gives Us A Tour of Boston - Part 1 - September 2011
+table[7] = 1931 Airplanes Over Boston
+table[8] = 1939 'Drive' thru Cambridge,Ma
+table[9] = NEVER_USED
+table[10] = Boston The Way It Was
+table[11] = 1933 NY Giants at Braves Field Boston Braves
+table[12] = 1940 Boston Maine Airways Instrument School
+table[13] = Video 12_1990: Boston Central Artery before the Big Dig
+table[14] = Let's go to town
+table[15] = Full Trolley Ride Through Boston 1903
+table[16] = Boston Horseless Fire Department
+table[17] = 1929 Mt. Washington Steamer Lake Winnipesaukee
+table[18] = NEVER_USED
+table[19] = NEVER_USED
+table[20] = NEVER_USED
+table[21] = NEVER_USED
+table[22] = Boston Mass - 1975
+table[23] = Rose Bowl Alabama 29 to Stanford 13 1935
+table[24] = Drive through Boston in 1964
+table[25] = Boston Common and Proper, 1930s
+table[26] = LN 501 473 Seeing Boston 1906 footagefarm.com
+table[27] = NEVER_USED
+table[28] = Boston Central Artery '88 - v2 - (1 of 5)
+table[29] = Colour on the Thames (1935)
+table[30] = NEVER_USED
+
+Collision! 1933 NY Giants at Braves Field Boston Braves collision with: Boston The Way It Was
+Prepending to head of Entry list...
+Collision! Full Trolley Ride Through Boston 1903 collision with: Let's go to town
+Prepending to head of Entry list...
+Collision! 1939 Color Movie Boston Skyline, Charles River collision with: 1941 Sugar Bowl - Tennessee vs. Boston College
+Prepending to head of Entry list...
+Collision! Boston Common and Proper, 1930s collision with: Boston Horseless Fire Department
+Prepending to head of Entry list...
+table[0] = NEVER_USED
+table[1] = New York, 1940s
+table[2] = 1939 Color Movie Boston Skyline, Charles River --> 1941 Sugar Bowl - Tennessee vs. Boston College
+table[3] = NEVER_USED
+table[4] = NEVER_USED
+table[5] = 1932 Original Celtics
+table[6] = NEVER_USED
+table[7] = 1931 Airplanes Over Boston
+table[8] = 1939 'Drive' thru Cambridge,Ma
+table[9] = NEVER_USED
+table[10] = 1933 NY Giants at Braves Field Boston Braves --> Boston The Way It Was
+table[11] = Boston Common and Proper, 1930s --> Boston Horseless Fire Department
+table[12] = 1940 Boston Maine Airways Instrument School
+table[13] = NEVER_USED
+table[14] = Full Trolley Ride Through Boston 1903 --> Let's go to town
+table[15] = NEVER_USED
+table[16] = NEVER_USED
+table[17] = 1929 Mt. Washington Steamer Lake Winnipesaukee
+table[18] = NEVER_USED
+table[19] = NEVER_USED
+table[20] = NEVER_USED
+table[21] = NEVER_USED
+table[22] = NEVER_USED
+table[23] = Rose Bowl Alabama 29 to Stanford 13 1935
+table[24] = NEVER_USED
+table[25] = NEVER_USED
+table[26] = LN 501 473 Seeing Boston 1906 footagefarm.com
+table[27] = NEVER_USED
+table[28] = NEVER_USED
+table[29] = Colour on the Thames (1935)
+table[30] = NEVER_USED
+
+fpt: 1933 NY Giants at Braves Field Boston Braves
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 26
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 14
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 17
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 23
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+Searched bucket 10
+table[0] = NEVER_USED
+table[1] = New York, 1940s
+table[2] = 1939 Color Movie Boston Skyline, Charles River --> 1941 Sugar Bowl - Tennessee vs. Boston College
+table[3] = NEVER_USED
+table[4] = NEVER_USED
+table[5] = 1932 Original Celtics
+table[6] = NEVER_USED
+table[7] = 1931 Airplanes Over Boston
+table[8] = 1939 'Drive' thru Cambridge,Ma
+table[9] = NEVER_USED
+table[10] = 1933 NY Giants at Braves Field Boston Braves --> Boston The Way It Was
+table[11] = Boston Common and Proper, 1930s --> Boston Horseless Fire Department
+table[12] = 1940 Boston Maine Airways Instrument School
+table[13] = NEVER_USED
+table[14] = Full Trolley Ride Through Boston 1903 --> Let's go to town
+table[15] = NEVER_USED
+table[16] = NEVER_USED
+table[17] = 1929 Mt. Washington Steamer Lake Winnipesaukee
+table[18] = NEVER_USED
+table[19] = NEVER_USED
+table[20] = NEVER_USED
+table[21] = NEVER_USED
+table[22] = NEVER_USED
+table[23] = Rose Bowl Alabama 29 to Stanford 13 1935
+table[24] = NEVER_USED
+table[25] = NEVER_USED
+table[26] = LN 501 473 Seeing Boston 1906 footagefarm.com
+table[27] = NEVER_USED
+table[28] = NEVER_USED
+table[29] = Colour on the Thames (1935)
+table[30] = NEVER_USED
+
+Title: Let's go to town
+Place: Boston
+Time: 1950's
+
+Collision! Video 12_1990: Boston Central Artery before the Big Dig collision with: 1940 Boston Maine Airways Instrument School
+Prepending to head of Entry list...
+Collision! Drive through Boston in 1964 collision with: 1933 NY Giants at Braves Field Boston Braves --> Boston The Way It Was
+Prepending to head of Entry list...
+Collision! Bill Burr Gives Us A Tour of Boston - Part 1 - September 2011 collision with: 1932 Original Celtics
+Prepending to head of Entry list...
+table[0] = NEVER_USED
+table[1] = New York, 1940s
+table[2] = 1939 Color Movie Boston Skyline, Charles River --> 1941 Sugar Bowl - Tennessee vs. Boston College
+table[3] = NEVER_USED
+table[4] = NEVER_USED
+table[5] = Bill Burr Gives Us A Tour of Boston - Part 1 - September 2011 --> 1932 Original Celtics
+table[6] = NEVER_USED
+table[7] = 1931 Airplanes Over Boston
+table[8] = 1939 'Drive' thru Cambridge,Ma
+table[9] = NEVER_USED
+table[10] = Drive through Boston in 1964 --> 1933 NY Giants at Braves Field Boston Braves --> Boston The Way It Was
+table[11] = Boston Common and Proper, 1930s --> Boston Horseless Fire Department
+table[12] = Video 12_1990: Boston Central Artery before the Big Dig --> 1940 Boston Maine Airways Instrument School
+table[13] = NEVER_USED
+table[14] = Full Trolley Ride Through Boston 1903 --> Let's go to town
+table[15] = NEVER_USED
+table[16] = NEVER_USED
+table[17] = 1929 Mt. Washington Steamer Lake Winnipesaukee
+table[18] = NEVER_USED
+table[19] = NEVER_USED
+table[20] = NEVER_USED
+table[21] = NEVER_USED
+table[22] = NEVER_USED
+table[23] = Rose Bowl Alabama 29 to Stanford 13 1935
+table[24] = Boston Mass - 1975
+table[25] = NEVER_USED
+table[26] = LN 501 473 Seeing Boston 1906 footagefarm.com
+table[27] = NEVER_USED
+table[28] = Boston Central Artery '88 - v2 - (1 of 5)
+table[29] = Colour on the Thames (1935)
+table[30] = NEVER_USED
+

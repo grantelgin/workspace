@@ -1,4 +1,12 @@
 
+/**
+ * The Entry class contains the properties and methods for managing entries in to both an OpenAddress hash table and
+ * a ChainedHashTable. 
+ * Additional methods for managing entries added to the linkedLists in a ChainedHashTable are included here. 
+ *
+ */
+
+
 public class Entry {
 	public static final int NEVER_USED = -1;
 	public static final int PREVIOUSLY_USED = -2;

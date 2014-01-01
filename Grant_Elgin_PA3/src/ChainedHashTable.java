@@ -1,7 +1,14 @@
 
+/**
+ * ChainedHashTable has the add, delete, search and show methods required for the table level of a chained hash table. 
+ * Functions for handling the linked lists inside each bucket are in the Entry class.
+ * 
+ *
+ */
+
 public class ChainedHashTable {
 	private static final int TABLE_SIZE = 31;
-	
+
 	private Entry table[];
 
 	public ChainedHashTable () {
@@ -25,12 +32,12 @@ public class ChainedHashTable {
 		String result = "";
 		FilmPlaceTime current = entry.first;
 		while (current.getTitle() != "") {
-		result += current.getTitle();
-		if (current.getNext().getTitle() != "") {
-			result += " --> ";
-		}
-		current = current.getNext();
-		
+			result += current.getTitle();
+			if (current.getNext().getTitle() != "") {
+				result += " --> ";
+			}
+			current = current.getNext();
+
 		}
 		return result;
 	}
@@ -47,25 +54,23 @@ public class ChainedHashTable {
 		}
 		data.setKey(bucket);
 		result = table[bucket].insert(data, bucket);	
-		
+
 		return result;
 	}
 
-	
-	
 	public boolean quickAdd (String title, String place, String time) {
-
 		boolean result = false;
-		
+
 		FilmPlaceTime newFilm = new FilmPlaceTime();
 		newFilm.setPlace(place);
 		newFilm.setTime(time);
 		newFilm.setTitle(title);
-		
+
 		result = add(newFilm);
 
 		return result;
 	}
+
 	public boolean delete(FilmPlaceTime data) {
 		int bucket = search(data);
 
@@ -76,7 +81,7 @@ public class ChainedHashTable {
 		table[bucket].setState(Entry.PREVIOUSLY_USED);
 		return true;
 	}
-	
+
 	public int search(FilmPlaceTime data) {
 		int bucket = hashFunction(data.getTitle());
 
@@ -125,7 +130,7 @@ public class ChainedHashTable {
 		return result;
 
 	}
-	
+
 	public String toString() {
 		String rtn = "";
 
@@ -151,10 +156,7 @@ public class ChainedHashTable {
 			}
 		}
 
-
 		return rtn;
 	}
-
-
 
 }

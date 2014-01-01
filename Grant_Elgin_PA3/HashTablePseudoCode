@@ -1,0 +1,48 @@
+Dec 10, 2013
+Grant Elgin - PA#3
+Open Address Hashing & Chained Hashing - Pseudo code
+
+The data to be used with these hash tables is a collection of historic video footage from different time periods around Boston. 
+
+1. Define the classes required for 2 different Hash tables, the OpenHashTable and the ChainedHashTable.
+2. Define the classes that will be used by both hash table types. The HashDriver (main), Entry, and FilmPlaceTime.
+
+OpenHashTable
+3. In HashDriver, instantiate an OpenHashTable. The OpenHashTable constructor will setup the table with 31 blank Entry elements.
+   31 is the number of elements set in TABLE_SIZE, a static final int.
+4. Create a list of FilmPlaceTime objects to be added to the table. The user can instantiate individual FilmPlaceTime objects, or can use the OpenHashTable quickAdd method.
+5. The OpenHashTable quickAdd method accepts title, place and time arguments, creates a new FilmPlaceTime object and passes that to the add method. 
+6. the add method accepts a FilmPlaceTime obj argument and sends the title attribute to the hashFunction.
+7. The hashFunction loops across the title length and adds up the char values for each character in the title. The sum is modded by the TABLE_SIZE and returned to the calling function.
+8. The add function uses the returned modded sum to select which bucket the FilmPlaceTime obj should be stored in the OpenHashTable.
+9. The OpenHashTable is a collection of Entry elements. The filmPlaceTime obj is stored as the data of the Entry obj and the Entry state attribute is updated to facilitate searching. 
+10. When the add function attempts to store the data, it will first check the state attribute of the Entry obj. If the state is NEVER_USED or PREVIOUSLY_USED, the new data is added. 
+11. If the state is IN_USE, we have a collision and will use quadratic probing to find another bucket and to prevent clustering. This repeats until an available bucket is found. 
+12. The search function should use the hashFunction to find the initial bucket attempted by the add function. It should then use the quadratic probe until it finds a match by comparing the title attribute.
+13. delete should use the search function to identify a bucket, set it's data to null, and set it's state to PREVIOUSLY_USED.
+14. The showHash function will print a list of the table elements, show their index and their status. if they are IN_USE, the table will show the title of the obj in that location.
+
+ChainedHashTable 
+15. In HashDriver, instantiate a ChainedHashTable. The ChainedHashTable constructor will setup the table with 31 blank Entry elements.
+    31 is the number of elements set in TABLE_SIZE, a static final int.
+16. The steps in HashDriver to create objects, add delete, or show them from the ChainedHashTable are identical to the steps above. Differences in the ChainedHashTable methods are listed below.
+17. The add method identifies a bucket by calling the hashFunction. The hashFunction works as described in item #7. 
+18. The add function will identify if there is a collision with data in the bucket, but will pass the data to the insert method of the Entry at that bucket. There is no need to identify a separate bucket with a ChainedHashTable. 
+19. The insert method in the Entry class accepts a FilmPlaceTime obj and a hashKey. The hashKey is set to the key attribute and the FilmPlaceTime obj is added to the head of the list at that Entry. 
+20. The search function gets the bucket by sending the title to the hashFunction, then calling the search method in the Entry class. 
+21. The search function of the Entry class loops over the linked list in the identified bucket until the title is matched. The FilmPlaceTime obj is returned to the calling function. 
+22. The delete function will get the correct bucket by sending the title to the hashFunction then calling the search function in the Entry class to find the correct listItem. 
+23. The correct list item is returned to the delete function where it's data is set to null, the prev item and the next item are updated to be linked. 
+24. The showHash function will print out each bucket on the ChainedHashTable and each title in each linked list.   
+
+
+
+
+
+
+
+
+
+
+
+

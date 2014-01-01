@@ -1,4 +1,10 @@
 
+/**
+ * OpenHashTable has the methods required to add, delete, search and show an Open Address Hash Table.
+ *
+ */
+
+
 public class OpenHashTable {
 	private static final int TABLE_SIZE = 31;
 
@@ -24,7 +30,7 @@ public class OpenHashTable {
 	private int linearProbe(int bucket) {
 		return (bucket + 1) % TABLE_SIZE;
 	}
-	
+
 	private int quadraticProbe(int bucket, int i) {
 		return (bucket + i * i) % TABLE_SIZE;
 	}
@@ -33,7 +39,7 @@ public class OpenHashTable {
 
 		int bucket = hashFunction(data.getTitle());
 		//int bucket = search(data);
-		
+
 		if ((table[bucket].getState() == Entry.NEVER_USED) || (table[bucket].getState() == Entry.PREVIOUSLY_USED)) {
 			table[bucket].setData(data);
 			table[bucket].setState(Entry.IN_USE);
@@ -55,20 +61,17 @@ public class OpenHashTable {
 			// Table is full
 			return false;
 		}
-
-
 	}
-	
+
 	public boolean quickAdd (String title, String place, String time) {
-		
 		boolean result = false;
 		FilmPlaceTime newFilm = new FilmPlaceTime();
 		newFilm.setPlace(place);
 		newFilm.setTime(time);
 		newFilm.setTitle(title);
-		
+
 		result = add(newFilm);
-		
+
 		return result;
 	}
 
@@ -79,6 +82,7 @@ public class OpenHashTable {
 			return false;
 		}
 
+		table[bucket].setData(null);
 		table[bucket].setState(Entry.PREVIOUSLY_USED);
 		return true;
 	}
@@ -87,13 +91,13 @@ public class OpenHashTable {
 		int bucket = hashFunction(data.getTitle());
 
 		if (table[bucket].getState() == Entry.NEVER_USED) {
-			return Entry.NEVER_USED;
-			//System.out.println("Bucket " + bucket + " has not yet been used. Adding to bucket " + bucket);
+			System.out.println("Bucket " + bucket + " has not yet been used. Adding to bucket " + bucket);
+			return bucket;
 		}
 
 		if (table[bucket].getData().getTitle().equals(data.getTitle())) {
 			System.out.println(table[bucket].getData().getTitle() + " found in bucket " + bucket);
-			return bucket;
+			return Entry.IN_USE;
 		} else {
 			// search for it
 			for (int i = 0; i < TABLE_SIZE; i++) {
@@ -120,24 +124,19 @@ public class OpenHashTable {
 		}
 
 	}
-	
+
 	public FilmPlaceTime searchByTitle (String title) {
 		FilmPlaceTime result = new FilmPlaceTime();
-		
-		int bucket = 0;
+
 		for (int i = 0; i < TABLE_SIZE; i++) {
-		if (table[i].getData().getTitle().equals(title)){
-			//bucket = hashFunction(table[i].getData().getTitle());
-			result = table[i].getData();
+			if (table[i].getData().getTitle().equals(title)){
+				result = table[i].getData();
+			}
 		}
-		}
-		
-		
-		
-		//result = table[bucket].getData();
-				
+
 		return result;
 	}
+
 
 	public String toString() {
 		String rtn = "";

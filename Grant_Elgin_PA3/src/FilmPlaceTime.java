@@ -1,4 +1,11 @@
 
+/**
+ * The FilmPlaceTime class has the properties required for storing this object in both an OpenHashTable and a ChainedHashTable.
+ * FilmPlaceTime objects store data about historical video footage.
+ *
+ */
+
+
 public class FilmPlaceTime {
 	private String title;
 	private String place;
@@ -15,7 +22,7 @@ public class FilmPlaceTime {
 	}
 	
 	public String toString() {
-		return "Title: " + title + "\nPlace: " + place + "Time: " + time + "\n";
+		return "Title: " + title + "\nPlace: " + place + "\nTime: " + time + "\n";
 	}
 
 	public String getTitle() {
